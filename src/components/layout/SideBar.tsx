@@ -1,57 +1,41 @@
-
 'use client'
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import {useAuth} from "@/libs/hooks/AuthHook.";
+import React from 'react'
+import Link from 'next/link'
+import { useAuth } from '@/libs/hooks/AuthHook.'
 
+import styles from './sideBar.module.scss'
+import { Button } from '../Button/Button'
 
 const Sidebar: React.FC = () => {
-    const pathname = usePathname();
-    const { logout } = useAuth();
+  const { logout } = useAuth()
 
-    const navItems = [
-        { name: 'Users list', href: '/users', icon: 'users' },
-        { name: 'Dashboard', href: '/dashboard', icon: 'chart-bar' }
-    ];
+  const navItems = [
+    { name: 'Users list', href: '/users', icon: 'users' },
+    { name: 'Dashboard', href: '/dashboard', icon: 'chart-bar' },
+  ]
 
-    return (
-        <div>
-            <div >
-                <h1 >Super Admin Panel</h1>
-            </div>
+  return (
+    <div className={styles.sidebar}>
+      <div className={styles.nav}>
+        <nav className={styles.sidebar}>
+          <ul className={styles.list}>
+            {navItems.map(item => (
+              <li key={item.name} className={styles.item}>
+                <Link className={styles.link} href={item.href}>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+            <li className={styles.item}>
+              <Button variant={'outline'} onClick={logout}>
+                Logout
+              </Button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  )
+}
 
-            <nav className="mt-6 px-2">
-                <ul className="space-y-2">
-                    {navItems.map((item) => (
-                        <li key={item.name}>
-                            <Link
-                                href={item.href}
-                                className={`flex items-center rounded-md px-4 py-2 ${
-                                    pathname === item.href
-                                        ? 'bg-indigo-900 text-white'
-                                        : 'text-indigo-100 hover:bg-indigo-700'
-                                }`}
-                            >
-                <span className="mr-3">
-                </span>
-                                {item.name}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-
-            <div className="absolute bottom-0 mb-4 w-64 px-4">
-                <button
-                    onClick={logout}
-                    className="flex w-full items-center rounded-md px-4 py-2 text-indigo-100 hover:bg-indigo-700"
-                >
-                    Logout
-                </button>
-            </div>
-        </div>
-    );
-};
-
-export default Sidebar;
+export default Sidebar

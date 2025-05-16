@@ -3,9 +3,9 @@
 import React, { forwardRef, useState } from 'react'
 
 import { EyeOffOutline, EyeOutline } from '@/assets/icons/components'
-import { combineClasses } from '@/common/utils/combineClasses'
 
 import styles from './input.module.scss'
+import { combineClasses } from '@/libs/combineClasses'
 
 export type InputProps = {
   errorMessage?: string

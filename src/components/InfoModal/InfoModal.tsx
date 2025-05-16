@@ -1,11 +1,12 @@
 import { ComponentPropsWithoutRef } from 'react'
 
 import { Close } from '@/assets/icons/components'
-import { Typography } from '@/common/components/Typography'
-import { Button } from '@/common/components/button'
+
 import * as Dialog from '@radix-ui/react-dialog'
 
-import styles from '@/common/components/Modals/InfoModal/InfoModal.module.scss'
+import styles from './InfoModal.module.scss'
+import { Typography } from '../Typography'
+import { Button } from '../Button/Button'
 
 export type InfoModalProps = {
   modalTitle: string

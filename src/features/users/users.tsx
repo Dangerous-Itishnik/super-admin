@@ -1,72 +1,141 @@
 'use client'
-import {SortDirection, useGetUsersQuery, UserBlockStatus} from "@/generated/graphql";
-import styles from "./users.module.scss"
-import DropdownSelect from "@/components/DropdownSelect/DropdownSelect";
-
-import {Button} from "@/components/Button/Button";
-
-import {Block} from "@/assets/icons/components";
-
+import {
+    PaginationModel,
+    useGetUsersQuery,
+    UserBlockStatus,
+} from '@/generated/graphql'
+import {Pagination} from '@/components/pagination/Pagination'
+import React, {useCallback, useMemo, useState} from 'react'
+import usePagination from '@/libs/hooks/usePagination'
+import UserSearch from '@/components/Search/searchUser'
+import {useSortBy} from '@/libs/hooks/useSort'
+import UsersTable from '@/features/users/UserTable'
+import {SelectCustom} from '@/components/select/select'
+import styles from './users.module.scss'
+import {useRouter} from "next/navigation";
 
 const Users = () => {
+    const [valuePagination, setValuePagination] = useState<PaginationModel | null>(null)
+    const [valueStatus, setValueStatus] = useState<UserBlockStatus>(UserBlockStatus.All)
+    const {icon, onSortChange, sort} = useSortBy()
+    const [valueSearch, setValueSearch] = useState<string>('')
+    const {currentPage, setCurrentPage, pageSize, setPageSize, setSortBy, sortBy} = usePagination()
+    const router = useRouter()
+    const {data, refetch} = useGetUsersQuery({
+        variables: {
+            pageSize: 10,
+            pageNumber: currentPage as number,
+            sortBy,
+            sortDirection: sort,
+            searchTerm: valueSearch,
+            statusFilter: valueStatus,
+        },
+        fetchPolicy: 'cache-and-network',
+    })
 
-        const {data, loading, error, refetch} = useGetUsersQuery({
-            variables: {
-                pageSize: 10,
-                pageNumber: 1,
-                sortBy: "createdAt",
-                sortDirection: SortDirection.Desc,
-                searchTerm: "",
-                statusFilter: UserBlockStatus.All
+
+
+    const sortByMap = useMemo(
+        () => ({
+            name: 'userName',
+            date: 'createdAt',
+        }),
+        []
+    )
+
+    const onChangeSortBy = useCallback(
+        (e: React.MouseEvent<HTMLTableCellElement, MouseEvent>, key: string) => {
+            const newSortBy = sortByMap[key]
+            if (!newSortBy) {
+                console.warn('Invalid sort key:', key)
+                return
             }
-        });
+            setSortBy(newSortBy)
+            onSortChange(key)
+        },
+        [sortByMap, onSortChange, setSortBy]
+    )
+    const onPageSizeChange = useCallback(
+        (value: number) => {
+            setPageSize(value)
+            setCurrentPage(1)
+        },
+        [setPageSize, setCurrentPage]
+    )
+
+    const onCurrentPageChange = useCallback(
+        (value: number | string) => {
+            setCurrentPage(Number(value))
+        },
+        [setCurrentPage]
+    )
+
+    const handleSearch = useCallback(
+        (searchTerm: string) => {
+            setValueSearch(searchTerm)
+            setCurrentPage(1)
+        },
+        [setCurrentPage]
+    )
+
+    const handleStatus = useCallback(
+        (value: UserBlockStatus) => {
+            setValueStatus(value)
+            setCurrentPage(1)
+        },
+        [setCurrentPage]
+    )
+
+    const paginationOptions = useMemo(
+        () => [
+            {label: '10', value: '10'},
+            {label: '20', value: '20'},
+            {label: '30', value: '30'},
+        ],
+        []
+    )
 
 
-        if (loading) return <div>Loading...</div>;
-       if (error) return <div>Error: {error.message}</div>;
+    const statusOptions = useMemo(
+        () => [
+            {label: 'All', value: UserBlockStatus.All},
+            {label: 'Blocked', value: UserBlockStatus.Blocked},
+            {label: 'Unblocked', value: UserBlockStatus.Unblocked},
+        ],
+        []
+    )
+    const handleUserDetails = useCallback((userId: number) => {
+        router.push(`/users/${userId}/info`)
+    }, [router])
 
-        return (
-            <div className={styles.container}>
-                <table className={styles.table}>
-                    <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Username</th>
-                        <th>Profile link</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {data?.getUsers.users.map((user) => (
-                        <tr key={user.id} style={{color: "wheat"}} className={styles.users}>
-                            <td>{user.id}</td>
-                            {user.userBan ? (
-                                <td>
-                                <Block/>
-                                {user.userName}</td>
-                            ) : <td>{user.userName}</td>}
-                            <td>{user.userName}</td>
-                            <td>{user.userName}</td>
-                            <td> {new Date(user.createdAt).toLocaleDateString('ru-RU')}</td>
-                            <td><DropdownSelect user={user} refetch={refetch}/></td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-                <div className={styles.pagination}>
-                    <Button variant={"primary"}>1</Button>
-                    <Button>2</Button>
-                    <Button>3</Button>
-                    <span>...</span>
-                    <Button>55</Button>
-                    <select>
-                        <option>Show 100 on page</option>
-                    </select>
-                </div>
+    return (
+        <>
+            <div className={styles.sands}>
+                <UserSearch onSearch={handleSearch}/>
+                <SelectCustom
+                    className={styles.select}
+                    options={statusOptions}
+                    onValueChange={handleStatus}
+                    value={valueStatus}
+                />
             </div>
-        );
-
-    }
-;
-export default Users
+            <UsersTable
+                data={data}
+                icon={icon}
+                onChangeSortBy={onChangeSortBy}
+                refetch={refetch}
+                onUserDetails={handleUserDetails}
+            />
+            <Pagination
+                options={paginationOptions}
+                pageSize={pageSize}
+                currentPage={currentPage as number}
+                onCurrentPageChange={onCurrentPageChange}
+                onPageSizeChange={onPageSizeChange}
+                portionValue={pageSize.toString()}
+                totalCount={valuePagination?.totalCount}
+            />
+        </>
+    )
+}
+export default React.memo(Users)

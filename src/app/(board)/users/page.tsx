@@ -1,10 +1,12 @@
 import React from 'react';
-
-
+import Users from "@/features/users/users";
 
 const Page = () => {
+
     return (
-       <div> here will be shown the list of users</div>
+        <div>
+            <Users/>
+        </div>
     );
 };
 

@@ -1,6 +1,4 @@
-import {gql} from "@apollo/client";
 
-export const GET_USERS = gql`
     query getUsers(
         $pageSize: Int,
         $pageNumber: Int,
@@ -27,6 +25,10 @@ export const GET_USERS = gql`
                     }
                 }
                 createdAt
+                userBan {
+                    reason
+                    createdAt
+                }
             }
             pagination {
                 pagesCount
@@ -36,4 +38,5 @@ export const GET_USERS = gql`
             }
         }
     }
-`;
+
+

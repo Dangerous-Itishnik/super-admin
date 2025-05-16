@@ -1,0 +1,22 @@
+query getUser( $userId: Int!){
+    getUser(userId: $userId){
+        id
+        userName
+        email
+        createdAt
+            profile {
+                id
+                userName
+                firstName
+                lastName
+                avatars {
+                    url
+                }
+
+            }
+        userBan {
+            reason
+            createdAt
+        }
+        }
+    }
