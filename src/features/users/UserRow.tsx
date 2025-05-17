@@ -7,11 +7,11 @@ import {User} from '@/generated/graphql'
 type UserRowProps = {
     user: User
     refetch: () => void
-    onUserDetails: (userId: number) => void
+    onUserDetails?: (userId: number) => void
 }
 
 // eslint-disable-next-line react/display-name
-const UserRow = React.memo(({user, refetch, onUserDetails}: UserRowProps) => (
+const UserRow = React.memo(({user, refetch}: UserRowProps) => (
     <tr key={user.id} style={{color: 'wheat'}} className={styles.users}>
         <td>{user.id}</td>
         <td>
@@ -26,7 +26,7 @@ const UserRow = React.memo(({user, refetch, onUserDetails}: UserRowProps) => (
         <td>{user.userName}</td>
         <td>{new Date(user.createdAt).toLocaleDateString('ru-RU')}</td>
         <td>
-            <DropdownSelect user={user} refetch={refetch} onUserDetails={onUserDetails} />
+            <DropdownSelect user={user} refetch={refetch} onUserDetails={()=>{}} />
         </td>
     </tr>
 ))

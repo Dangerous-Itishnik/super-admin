@@ -4,74 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(board)/users/[userId]/info/[tabs]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(board)/users/[userId]/info/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfileHeader/ProfileHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfileHeader/profileHeader.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Tabs/ProfileTabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Tabs/tabs.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/Followers/Followers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/Following/Following.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/MoreInfo/MoreInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/Payments/Payments.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/UpdatedPhotos/Photos.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphql/queries/getUser.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.cjs" afterDir="false" />
+    <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="add">
+      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/Photos/Photos.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apollo.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apollo.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codegen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/codegen.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphql.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/graphql.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(board)/board.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/board.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(board)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(board)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(board)/users/[userId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/users/[userId]/info/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(board)/users/[userId]/info/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/users/[userId]/info/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icons/components/Filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/components/Filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icons/components/Polygon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/components/Polygon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icons/components/PolygonUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/components/PolygonUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/button.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/button.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dropdown/Dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dropdown/Dropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dropdown/dropdown.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dropdown/dropdown.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InfoModal/InfoModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoModal/InfoModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Input/input.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Input/input.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/search.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/search.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/SideBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/header.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/sideBar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/sideBar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/pagination.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/pagination.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/select.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/select.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProfileHeader/ProfileHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileHeader/ProfileHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tabs/ProfileTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tabs/ProfileTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/MoreInfo/MoreInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/MoreInfo/MoreInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/UpdatedPhotos/Photos.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/users/UserRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/UserRow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/users/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/UserTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/users/users.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/users.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/users/users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/users.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/mutations/ban.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/mutations/ban.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/mutations/login.genarated.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/mutations/login.genarated.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/mutations/removeUser.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/mutations/removeUser.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/mutations/unBun.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/mutations/unBun.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/queries/getUsers.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/queries/getUsers.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/apollo-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/apollo-client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/combineClasses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/combineClasses.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/hooks/AuthHook..tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/hooks/AuthHook..tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/hooks/useModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/hooks/useModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/hooks/usePagination.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/hooks/usePagination.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/hooks/useSort.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/hooks/useSort.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/ApolloClientProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/ApolloClientProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_colors.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/_globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_globals.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +139,18 @@
       <workItem from="1747302550741" duration="9920000" />
       <workItem from="1747312614641" duration="36472000" />
       <workItem from="1747387569280" duration="27326000" />
+      <workItem from="1747415831872" duration="977000" />
+      <workItem from="1747420556514" duration="6934000" />
     </task>
+    <task id="LOCAL-00001" summary="add">
+      <option name="closed" value="true" />
+      <created>1747416082890</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747416082890</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,5 +166,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
 </project>

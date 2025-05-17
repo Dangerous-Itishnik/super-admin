@@ -17,15 +17,15 @@ import { Trash } from '@/assets/icons/components'
 import Block from '@/assets/icons/components/Block'
 import MoreHorizontal from '@/assets/icons/components/MoreHorizontal'
 import { Input } from '@/components/Input'
-import { useRouter } from 'next/navigation'
+
 
 type Props = {
   user: User
   refetch: () => void
-  onUserDetails: (userId: number) => void
+  onUserDetails?: (userId: number) => void
 }
 
-const DropdownSelect = ({ user, refetch, onUserDetails }: Props) => {
+const DropdownSelect = ({ user, refetch, }: Props) => {
   const [customReason, setCustomReason] = useState<string>('')
   const [selectedReason, setSelectedReason] = useState<string>('')
   const { openModal: openBanModel, isOpen: isBanOpen, closeModal: closeBanModel } = useModal()
@@ -87,7 +87,8 @@ const DropdownSelect = ({ user, refetch, onUserDetails }: Props) => {
   }
 
   const handleMoreInfo = () => {
-    onUserDetails(user.id)
+    //onUserDetails(user.id)
+
   }
 
   const options = [

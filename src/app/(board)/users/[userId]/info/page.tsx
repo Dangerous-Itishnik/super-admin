@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { useParams, useRouter } from 'next/navigation'
 import ProfileTabs from '@/components/Tabs/ProfileTabs'
+;
 
 type ValidTab = 'Photos' | 'Payments' | 'Followers' | 'Following'
 
@@ -19,7 +20,7 @@ export default function InfoPage() {
     if (tabParam && tabParam !== activeTab) {
       setActiveTab(tabParam)
     } else if (!tabParam) {
-      router.replace(`/users/${userId}/info/updated_photos`)
+      router.replace(`/users/${userId}/info/Photos`)
     }
   }, [tabParam, activeTab, userId, router])
 

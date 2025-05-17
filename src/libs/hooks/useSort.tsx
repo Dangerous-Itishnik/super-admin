@@ -23,7 +23,6 @@ export const useSortBy = () => {
 
   const icon = useCallback(
     (key: string): React.ReactNode => {
-      console.log('Icon called:', { key, activeKey, sort })
       if (activeKey !== key) return <Filter />
       if (sort === SortDirection.Desc) return <Polygon />
       if (sort === SortDirection.Asc) return <PolygonUp />

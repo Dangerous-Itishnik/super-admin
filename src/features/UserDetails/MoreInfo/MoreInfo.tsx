@@ -1,26 +1,33 @@
 'use client'
 
-import {useGetUserQuery, User} from "@/generated/graphql";
+import {useGetUserQuery} from "@/generated/graphql";
 import {useParams} from "next/navigation";
-import {useState} from "react";
+
 
 
 const MoreInfo = () => {
-const{userId} = useParams()
-
-
-    const { data } = useGetUserQuery({
-        variables: { userId: numericUserId},
+    const { userId } = useParams()
+    const userIdNumber = Number(userId)
+    const { data, error } = useGetUserQuery({
+        variables: { userId: 2679 }
     })
+    if (!userId) {
+        return <div>User ID not found in URL</div>
+    }
 
 
 
+    if (isNaN(userIdNumber)) {
+        return <div>Invalid user ID format</div>
+    }
+
+
+
+    if (error) {
+        return <div>Error loading user: {error.message}</div>
+    }
     return (
-        <div>
-            <h1>User Details</h1>
-
-            <pre>{JSON.stringify(data?.getUser.id, null, 2)}</pre>
-        </div>
+        <div> Hallo ich bin da</div>
     )
 }
 

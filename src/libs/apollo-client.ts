@@ -7,18 +7,16 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
-
-    const auth = btoa('igorgrim@gmail.com');
+    const Auth = btoa('igorgrime@gmail.com:Ex4mple!');
 
     return {
         headers: {
             ...headers,
-            Authorization: `Basic ${auth}`,
+            Authorization: `Basic ${Auth}`,
             'Content-Type': 'application/json',
         }
     };
 });
-
 export const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
@@ -28,3 +26,5 @@ export const client = new ApolloClient({
         },
     },
 })
+
+

@@ -3,7 +3,7 @@ import * as Tabs from '@radix-ui/react-tabs'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 
 import styles from './tabs.module.scss'
-import Photos from '@/features/UserDetails/UpdatedPhotos/Photos'
+import Photos from '@/features/UserDetails/Photos/Photos'
 import Payments from '@/features/UserDetails/Payments/Payments'
 import Followers from '@/features/UserDetails/Followers/Followers'
 import Following from '@/features/UserDetails/Following/Following'
@@ -54,8 +54,8 @@ const ProfileTabs: React.FC<ProfileTabsProps> = ({ activeTab: propActiveTab, onT
         ))}
       </Tabs.List>
 
-      <Tabs.Content value={'Updated Photos'}>
-        <Photos userId={id} />
+      <Tabs.Content value={'Photos'}>
+        <Photos  />
       </Tabs.Content>
       <Tabs.Content value={'Payments'}>
         <Payments />

@@ -8,13 +8,13 @@ type UsersTableProps = {
     icon: (key: string) => React.ReactNode
     onChangeSortBy: (e: React.MouseEvent<HTMLTableCellElement, MouseEvent>, key: string) => void
     refetch: () => void
-    onUserDetails: (userId: number) => void
+    //onUserDetails: (userId: number) => void
     ref?: React.RefObject<HTMLTableElement>
 }
 
 const UsersTable = React.memo(
     React.forwardRef<HTMLTableElement, UsersTableProps>(
-        ({data, icon, onChangeSortBy, refetch, onUserDetails}, ref) => {
+        ({data, icon, onChangeSortBy, refetch, }, ref) => {
             return (
                 <table ref={ref} className={styles.table}>
                     <thead>
@@ -28,7 +28,7 @@ const UsersTable = React.memo(
                     </thead>
                     <tbody>
                     {data?.getUsers.users.map(user => (
-                        <UserRow key={user.id} user={user} refetch={refetch}  onUserDetails={onUserDetails}/>
+                        <UserRow key={user.id} user={user} refetch={refetch}  onUserDetails={()=> {}}/>
                     ))}
                     </tbody>
                 </table>

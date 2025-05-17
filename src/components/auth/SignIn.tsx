@@ -1,6 +1,10 @@
 'use client'
 import React, { useState } from 'react'
 import { useAuth } from '@/libs/hooks/AuthHook.'
+import styles from './singIn.module.scss'
+import {Button} from "@/components/Button/Button";
+
+
 
 const SignInForm: React.FC = () => {
   const [email, setEmail] = useState('igorgrime@gmail.com')
@@ -23,8 +27,8 @@ const SignInForm: React.FC = () => {
       <div>
         {error && <div>{error}</div>}
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div>
             <label htmlFor="email">Email</label>
             <input
               id="email"
@@ -32,10 +36,11 @@ const SignInForm: React.FC = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
+             className={styles.input}
             />
           </div>
 
-          <div className="mb-6">
+          <div>
             <label htmlFor="password">Password</label>
             <input
               id="password"
@@ -43,13 +48,14 @@ const SignInForm: React.FC = () => {
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
+              className={styles.input}
             />
           </div>
 
           <div>
-            <button type="submit" disabled={loginLoading}>
+            <Button type="submit" disabled={loginLoading} variant={"secondary"}>
               {loginLoading ? 'Signing in...' : 'Sign In'}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

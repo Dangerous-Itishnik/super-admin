@@ -12,7 +12,7 @@ import {useSortBy} from '@/libs/hooks/useSort'
 import UsersTable from '@/features/users/UserTable'
 import {SelectCustom} from '@/components/select/select'
 import styles from './users.module.scss'
-import {useRouter} from "next/navigation";
+//import {useRouter} from "next/navigation";
 
 const Users = () => {
     const [valuePagination, setValuePagination] = useState<PaginationModel | null>(null)
@@ -20,7 +20,7 @@ const Users = () => {
     const {icon, onSortChange, sort} = useSortBy()
     const [valueSearch, setValueSearch] = useState<string>('')
     const {currentPage, setCurrentPage, pageSize, setPageSize, setSortBy, sortBy} = usePagination()
-    const router = useRouter()
+    //const router = useRouter()
     const {data, refetch} = useGetUsersQuery({
         variables: {
             pageSize: 10,
@@ -104,9 +104,9 @@ const Users = () => {
         ],
         []
     )
-    const handleUserDetails = useCallback((userId: number) => {
-        router.push(`/users/${userId}/info`)
-    }, [router])
+   // const handleUserDetails = useCallback((userId: number) => {
+      // router.push(`/users/${userId}/info`)
+    //}, [router])
 
     return (
         <>
@@ -124,7 +124,7 @@ const Users = () => {
                 icon={icon}
                 onChangeSortBy={onChangeSortBy}
                 refetch={refetch}
-                onUserDetails={handleUserDetails}
+                //onUserDetails={handleUserDetails}
             />
             <Pagination
                 options={paginationOptions}
