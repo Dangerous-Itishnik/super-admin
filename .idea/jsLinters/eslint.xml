@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="EslintConfiguration">
+    <files-pattern value="&quot;lint&quot;: &quot;eslint src/**/*.js src/**/*.ts src/**/*.jsx src/**/*.tsx src/**/*.html src/**/*.vue --fix &amp;&amp; stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input&quot;" />
     <option name="fix-on-save" value="true" />
   </component>
 </project>
