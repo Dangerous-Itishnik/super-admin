@@ -6,13 +6,8 @@ import styles from './signIn.module.scss'
 import {useState} from "react";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
 
-interface SignInProps {
-    email: string
-    password: string
-    // onSubmit: (data: { email: string, password: string }) => void
-}
 
-export const SignIn = ({email, password, onSubmit}: SignInProps) => {
+export const SignIn = () => {
 
     const {register, handleSubmit, formState: {errors, isValid}} = useForm(
         {
@@ -30,13 +25,14 @@ export const SignIn = ({email, password, onSubmit}: SignInProps) => {
         setShowPassword(!showPassword)
     }
 
-    const onSumbitTest = (data) => {
-        alert(JSON.stringify(data))
+    const onSubmit = (data) => {
+        return { email:data.email, password:data.password };
     }
+
 
     return (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit(onSumbitTest)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <h1>Sign In</h1>
                 <div>
                     <span>Email</span>
@@ -64,9 +60,7 @@ export const SignIn = ({email, password, onSubmit}: SignInProps) => {
                     {errors?.password && <p>{errors?.password?.message || 'Some error'}</p>}
                 </div>
                 <div>
-                    <button type={'submit'} onClick={() => {
-                    }} disabled={!isValid}>Sign In
-                    </button>
+                    <button type={'submit'}  disabled={!isValid}>Sign In</button>
                 </div>
             </form>
         </div>
