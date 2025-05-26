@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 60px;
+  padding: 12px 60px;
+
+  color: var(--color-light-100);
+
+  border-bottom: 1px solid var(--color-dark-300) !important;
+
+  position: relative;
+
+  @media (width <= 768px) {
+    padding: 12px 16px;
+  }
+}
+
+.logo {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--line-height-l);
+}
+.logo span {
+  font-size: var(--font-size-xs);
+}
+
+.buttons {
+  display: flex;
+  gap: 44px;
+  align-items: center;
+}
