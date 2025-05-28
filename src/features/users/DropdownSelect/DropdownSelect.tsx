@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Dropdown, DropdownItem } from '@/components/Dropdown/Dropdown'
-import { Button } from '../../../components/Button/Button'
+import { Button } from '@/components/Button/Button'
 
 import styles from './dps.module.scss'
 import { InfoModal } from '@/components/InfoModal/InfoModal'
@@ -22,10 +22,10 @@ import { Input } from '@/components/Input'
 type Props = {
   user: User
   refetch: () => void
-  onUserDetails?: (userId: number) => void
+  onUserDetails: (userId: number) => void
 }
 
-const DropdownSelect = ({ user, refetch, }: Props) => {
+const DropdownSelect = ({ user, refetch, onUserDetails }: Props) => {
   const [customReason, setCustomReason] = useState<string>('')
   const [selectedReason, setSelectedReason] = useState<string>('')
   const { openModal: openBanModel, isOpen: isBanOpen, closeModal: closeBanModel } = useModal()
@@ -49,7 +49,7 @@ const DropdownSelect = ({ user, refetch, }: Props) => {
           banReason,
         },
       })
-      await refetch()
+      refetch()
       closeBanModel()
     } catch (error) {
       console.log(error)
@@ -63,7 +63,7 @@ const DropdownSelect = ({ user, refetch, }: Props) => {
           userId,
         },
       })
-      await refetch()
+      refetch()
     } catch (error) {
       console.error('Error unbanning user:', error)
     }
@@ -87,7 +87,7 @@ const DropdownSelect = ({ user, refetch, }: Props) => {
   }
 
   const handleMoreInfo = () => {
-    //onUserDetails(user.id)
+    onUserDetails(user.id)
 
   }
 

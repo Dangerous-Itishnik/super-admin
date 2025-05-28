@@ -1,10 +1,12 @@
 .headerContainer {
   display: flex;
-  column-gap: 20px;
-  background: #0a6638;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  width: 100%;
-  max-width: 996px;
+  width: 360px;
+  height: 128px;
+
 
   @media (width <= 768px) {
     flex-direction: column;
@@ -12,6 +14,17 @@
   }
 }
 
+.imageAndUsername {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .containerImageName {
   display: flex;
   flex-direction: row;
@@ -21,11 +34,14 @@
 
 .imageContainer {
   position: relative;
-  width: 204px;
-  height: 204px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin-top: 10px;
 
   @media (width >= 768px) {
-    flex: 0 0 204px;
+    flex: 0 0 60px;
   }
 
   @media (width <= 768px) {
@@ -35,13 +51,13 @@
 
 .imageContainerMedia {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 42px;
+  height: 42px;
 
   @media (width >= 768px) {
     display: none;
-    width: 204px;
-    height: 204px;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -54,7 +70,10 @@
 
 .container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  margin-top: 15px;
 
   @media (width >= 768px) {
     flex-direction: column;
@@ -65,8 +84,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-
+  justify-content: center;
+  gap: 20px;
   width: 100%;
 
   @media (width >= 768px) {

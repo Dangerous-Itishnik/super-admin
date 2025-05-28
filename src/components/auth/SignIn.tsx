@@ -7,8 +7,8 @@ import {Button} from "@/components/Button/Button";
 
 
 const SignInForm: React.FC = () => {
-  const [email, setEmail] = useState('igorgrime@gmail.com')
-  const [password, setPassword] = useState('Ex4mple!')
+  const [email, setEmail] = useState('admin@gmail.com')
+  const [password, setPassword] = useState("admin")
   const [error, setError] = useState('')
   const { login, loginLoading } = useAuth()
 

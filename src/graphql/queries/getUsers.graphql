@@ -1,42 +1,35 @@
-
-    query getUsers(
-        $pageSize: Int,
-        $pageNumber: Int,
-        $sortBy: String!,
-        $sortDirection: SortDirection!,
-        $searchTerm: String!,
-        $statusFilter: UserBlockStatus!
+query getUsers(
+$pageSize: Int,
+$pageNumber: Int,
+$sortBy: String!,
+$sortDirection: SortDirection!,
+$searchTerm: String!,
+$statusFilter: UserBlockStatus!
+) {
+    getUsers(
+        pageSize: $pageSize,
+        pageNumber: $pageNumber,
+        sortBy: $sortBy,
+        sortDirection: $sortDirection,
+        searchTerm: $searchTerm,
+        statusFilter: $statusFilter
     ) {
-        getUsers(
-            pageSize: $pageSize,
-            pageNumber: $pageNumber,
-            sortBy: $sortBy,
-            sortDirection: $sortDirection,
-            searchTerm: $searchTerm,
-            statusFilter: $statusFilter
-        ) {
-            users {
+        users {
+            id
+            email
+            userName
+            profile {
                 id
-                userName
-                profile {
-                    id
-                    avatars {
-                        url
-                    }
-                }
-                createdAt
-                userBan {
-                    reason
-                    createdAt
+                avatars {
+                    url
                 }
             }
-            pagination {
-                pagesCount
-                page
-                pageSize
-                totalCount
+            createdAt
+            userBan {
+                reason
+                createdAt
             }
         }
     }
-
+}
 
