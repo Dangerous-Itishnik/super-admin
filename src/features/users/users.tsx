@@ -1,5 +1,6 @@
 'use client'
 import {
+    GetUserQuery, GetUsersQuery,
     PaginationModel,
     useGetUsersQuery,
     UserBlockStatus,

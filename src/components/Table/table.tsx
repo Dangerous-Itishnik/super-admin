@@ -64,7 +64,7 @@ export const Table = React.memo(<T extends Record<string, unknown>>({
         (item: T, column: TableColumn<T>): React.ReactNode => {
             let value: T[keyof T];
 
-            // Get the value using accessor function or key
+
             if (typeof column.accessor === 'function') {
                 value = column.accessor(item);
             } else if (column.accessor) {
@@ -83,23 +83,9 @@ export const Table = React.memo(<T extends Record<string, unknown>>({
                 return value.toLocaleDateString('en-US');
             }
             if (typeof value === 'string' && !isNaN(Date.parse(value))) {
-                return new Date(value).toLocaleDateString('en-US');
+                return new Date(value).toLocaleDateString('ru-RU');
             }
 
-            // Handle known renderable types
-            if (
-                value === null ||
-                value === undefined ||
-                typeof value === 'string' ||
-                typeof value === 'number' ||
-                typeof value === 'boolean' ||
-                React.isValidElement(value)
-            ) {
-                return value;
-            }
-
-            // Fallback: Convert to string for non-renderable types
-            // Use JSON.stringify for objects to avoid [object Object]
             if (typeof value === 'object' && value !== null) {
                 try {
                     return JSON.stringify(value);
@@ -145,7 +131,7 @@ export const Table = React.memo(<T extends Record<string, unknown>>({
                     </thead>
                     <tbody>
                     {data.map((item, index) => (
-                        <tr key={item.id || index} className={rowClassName}>
+                        <tr key={item.id} className={rowClassName}>
                             {columns.map((column) => (
                                 <td key={`${item.id || index}-${column.key}`}>
                                     {renderCellValue(item, column)}

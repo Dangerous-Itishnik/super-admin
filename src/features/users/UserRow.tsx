@@ -3,6 +3,7 @@ import {Block} from '@/assets/icons/components'
 import DropdownSelect from '@/features/users/DropdownSelect/DropdownSelect'
 import styles from './users.module.scss'
 import {User} from '@/generated/graphql'
+import Link from "next/link"
 
 type UserRowProps = {
     user: User
@@ -23,7 +24,7 @@ const UserRow = React.memo(({user, refetch, onUserDetails}: UserRowProps) => (
                 user.userName
             )}
         </td>
-        <td>{user.userName}</td>
+        <td><Link href={`/users/${user.id}/info`}>{user.userName}</Link></td>
         <td>{new Date(user.createdAt).toLocaleDateString('ru-RU')}</td>
         <td>
             <DropdownSelect user={user} refetch={refetch} onUserDetails={onUserDetails} />
