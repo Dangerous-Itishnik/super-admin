@@ -4,14 +4,13 @@
   background: var(--color-dark-900);
   border-radius: 8px;
 
-  .paymentsTable {
+  .tableWrapper {
     border-collapse: collapse;
     width: 100%;
     display: block;
 
     table {
       width: 100%;
-      min-width: 100%;
       border-collapse: collapse;
 
       th,

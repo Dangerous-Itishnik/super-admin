@@ -32,6 +32,11 @@ query getPaymentsByUser(
                 type
             }
         }
+        pagesCount
+        page
+        pageSize
+        totalCount
+
     }
 
 }

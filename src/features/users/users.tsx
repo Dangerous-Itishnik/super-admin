@@ -15,7 +15,6 @@ import styles from './users.module.scss'
 import {useRouter} from "next/navigation";
 
 const Users = () => {
-    const [valuePagination] = useState<PaginationModel | null>(null)
     const [valueStatus, setValueStatus] = useState<UserBlockStatus>(UserBlockStatus.All)
     const {icon, onSortChange, sort} = useSortBy()
     const [valueSearch, setValueSearch] = useState<string>('')
@@ -23,7 +22,7 @@ const Users = () => {
     const router = useRouter()
     const {data, refetch} = useGetUsersQuery({
         variables: {
-            pageSize: 10,
+            pageSize: 8,
             pageNumber: currentPage as number,
             sortBy,
             sortDirection: sort,
@@ -103,8 +102,8 @@ const Users = () => {
     )
 
     const handleUserDetails = useCallback((userId: number) => {
-       router.push(`/users/${userId}/info`)
-   },[router])
+        router.push(`/users/${userId}/info`)
+    },[router])
 
     return (
         <>
@@ -131,7 +130,7 @@ const Users = () => {
                 onCurrentPageChange={onCurrentPageChange}
                 onPageSizeChange={onPageSizeChange}
                 portionValue={pageSize.toString()}
-                totalCount={valuePagination?.totalCount}
+                totalCount={data?.getUsers.pagination.totalCount}
             />
         </>
     )

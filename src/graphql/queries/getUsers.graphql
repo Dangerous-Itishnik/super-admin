@@ -30,6 +30,13 @@ $statusFilter: UserBlockStatus!
                 createdAt
             }
         }
+        pagination{
+            page
+            pagesCount
+            pageSize
+            totalCount
+
+        }
     }
 }
 

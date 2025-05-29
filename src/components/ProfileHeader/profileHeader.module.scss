@@ -1,11 +1,14 @@
 .headerContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 360px;
-  height: 128px;
+  .headerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alle Elemente links ausrichten */
+    gap: 20px; /* Gleichmäßiger Abstand zwischen den Elementen */
+    width: 100%;
+    max-width: 1200px; /* Optional: Maximale Breite begrenzen */
+    margin: 0 auto; /* Zentrieren falls nötig */
+    padding: 20px;
+  }
 
 
   @media (width <= 768px) {
@@ -17,13 +20,15 @@
 .imageAndUsername {
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 20px;
+  align-items: center; /* Vertikal zentrieren */
+  width: 100%;
 }
 .textContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
 }
 .containerImageName {
   display: flex;
@@ -70,8 +75,8 @@
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
   margin-top: 15px;
 
@@ -83,8 +88,6 @@
 .userNameContainer {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
   width: 100%;
 
@@ -101,8 +104,7 @@
 }
 
 .userName {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
   line-height: var(--line-height-l);
 
   @media (width <= 768px) {
@@ -129,7 +131,6 @@
   align-items: center;
 
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semi-bold);
 
   @media (width >= 768px) {
     font-size: var(--font-size-s);

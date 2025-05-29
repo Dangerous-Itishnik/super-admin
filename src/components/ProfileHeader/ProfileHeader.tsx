@@ -22,9 +22,11 @@ const ProfileHeader = () => {
 
     return (
         <div className={styles.headerContainer}>
+            <div>
             <Link  href="/users" >
                 <ArrowBackOutline/>
             </Link>
+            </div>
             <div className={styles.imageAndUsername}>
                 <div className={styles.imageContainer}>
                     {profile.avatars?.length ? (
@@ -45,18 +47,18 @@ const ProfileHeader = () => {
                     <Typography className={styles.userName} variant="h3">
                         {userName}
                     </Typography>
-                    <Typography className={styles.userEmail} variant="body2">
+                    <Typography className={styles.userEmail} variant={"body1"}>
                         {data?.getUser.email}
                     </Typography>
                 </div>
             </div>
             <div className={styles.container}>
                 <div className={styles.userNameContainer}>
-                    <Typography className={styles.userName} variant="body2">
+                    <Typography className={styles.userName} variant="body1">
                         UserID <br/>
                         {profile.id}
                     </Typography>
-                    <Typography className={styles.userName} variant="body2">
+                    <Typography className={styles.userName} variant="body1">
                         Profile Creation Date <br/>
                         {new Date(data.getUser.createdAt).toLocaleDateString('ru-RU')}
                     </Typography>

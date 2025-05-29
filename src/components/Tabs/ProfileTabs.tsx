@@ -40,7 +40,9 @@ const ProfileTabs: React.FC<ProfileTabsProps> = ({activeTab: propActiveTab, onTa
     const tabValues: TabType[] = ['Photos', 'Payments', 'Followers', 'Following']
     return (
         <div className={styles.container}>
-            <ProfileHeader/>
+            <div className={styles.profileHeaderWrapper}>
+                <ProfileHeader />
+            </div>
             <Tabs.Root className={styles.tabsRoot} onValueChange={handleValueChange} value={activeTab}>
                 <Tabs.List className={styles.tabsList}>
                     {tabValues.map(tab => (

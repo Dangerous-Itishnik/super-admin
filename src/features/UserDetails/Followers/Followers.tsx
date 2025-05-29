@@ -1,95 +1,61 @@
-import React, {useCallback, useMemo, useState} from "react";
-import {PaginationModel, useGetFollowersQuery} from "@/generated/graphql";
-import {useSortBy} from "@/libs/hooks/useSort";
-import usePagination from "@/libs/hooks/usePagination";
+import {useGetFollowersQuery} from "@/generated/graphql";
 import {useParams} from "next/navigation";
+import {Table} from "@/components/Table/table"
+import styles from "./followers.module.scss";
+import {useAction} from "@/libs/hooks/useAction";
+import {useFollowersTableConfig} from "@/features/UserDetails/configs";
 import {Pagination} from "@/components/pagination/Pagination";
-import {Typography} from "@/components/Typography";
 
-import styles from "./followers.module.scss"
 
-const Followers = () => {
-    const [valuePagination] = useState<PaginationModel | null>(null)
-    const {icon, sort} = useSortBy()
-    const {currentPage, setCurrentPage, pageSize, setPageSize, sortBy} = usePagination()
+export default function Followers() {
     const {userId} = useParams()
     const userIdNum = Number(userId)
-    const {data} = useGetFollowersQuery({
+    const {columns} = useFollowersTableConfig()
+    const {
+        paginationOptions,
+        onPageSizeChange,
+        onCurrentPageChange,
+        handleSortChange,
+        icon,
+        activeKey,
+        sort,
+        pageSize,
+        currentPage,
+        sortBy,
+    } = useAction();
+    const {data, loading, error} = useGetFollowersQuery({
         variables: {
             userId: userIdNum,
-            pageSize: 10,
+            pageSize: pageSize,
             pageNumber: currentPage as number,
             sortBy,
             sortDirection: sort
         }
     })
 
-
-    const paginationOptions = useMemo(
-        () => [
-            {label: '10', value: '10'},
-            {label: '20', value: '20'},
-            {label: '30', value: '30'},
-        ],
-        []
-    )
-
-    const onPageSizeChange = useCallback(
-        (value: number) => {
-            setPageSize(value)
-            setCurrentPage(1)
-        },
-        [setPageSize, setCurrentPage]
-    )
-    const onCurrentPageChange = useCallback(
-        (value: number | string) => {
-            setCurrentPage(Number(value))
-        },
-        [setCurrentPage]
-    )
-
-
-    return <div>
+    return (
         <div className={styles.profileSettings}>
-            <table className={styles.paymentsTable}>
-                <thead>
-                <tr>
-                    <th>
-                        <Typography variant={'h2'}>User ID</Typography>
-                    </th>
-                    <th>
-                        <Typography variant={'h2'}>Username</Typography>
-                    </th>
-                    <th>
-                        <Typography variant={'h2'}>Profile Link</Typography>
-                    </th>
-                    <th>
-                        <Typography variant={'h2'}>Subscription Date</Typography>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {data?.getFollowers.items.map(follower => (
-                    <tr key={follower.id}>
-                        <td>{follower.userId}</td>
-                        <td>${follower.userName}</td>
-                        <td>{follower.userName}</td>
-                        <td>{new Date(follower.createdAt).toLocaleDateString()}</td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+            <Table
+                data={data?.getFollowers.items || []}
+                columns={columns}
+                loading={loading}
+                error={error?.message}
+                tableClassName={styles.paymentsTable}
+                sortIcon={icon}
+                onSortChange={handleSortChange}
+                activeKey={activeKey}
+                sortBy={sortBy}
+                sortDirection={sort}
+            />
+            <Pagination
+                options={paginationOptions}
+                pageSize={pageSize}
+                currentPage={currentPage as number}
+                onCurrentPageChange={onCurrentPageChange}
+                onPageSizeChange={onPageSizeChange}
+                portionValue={pageSize.toString()}
+                totalCount={data?.getFollowers.totalCount}
+            />
         </div>
-        <Pagination
-            options={paginationOptions}
-            pageSize={pageSize}
-            currentPage={currentPage as number}
-            onCurrentPageChange={onCurrentPageChange}
-            onPageSizeChange={onPageSizeChange}
-            portionValue={pageSize.toString()}
-            totalCount={valuePagination?.totalCount}
-        />
-    </div>
+    )
 }
-
-export default Followers

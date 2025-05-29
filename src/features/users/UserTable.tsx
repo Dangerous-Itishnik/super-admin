@@ -4,7 +4,7 @@ import {User} from '@/generated/graphql'
 import React from 'react'
 
 type UsersTableProps = {
-    data: { getUsers: { users: User[] } } | undefined
+    data: { getUsers: { users: User[] } }
     icon: (key: string) => React.ReactNode
     onChangeSortBy: (e: React.MouseEvent<HTMLTableCellElement, MouseEvent>, key: string) => void
     refetch: () => void
@@ -28,7 +28,7 @@ const UsersTable = React.memo(
                     </thead>
                     <tbody>
                     {data?.getUsers.users.map(user => (
-                        <UserRow key={user.id} user={user} refetch={refetch} onUserDetails={onUserDetails}/>
+                        <UserRow key={user.id} user={user} refetch={refetch}  onUserDetails={onUserDetails}/>
                     ))}
                     </tbody>
                 </table>

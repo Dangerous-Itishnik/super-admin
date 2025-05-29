@@ -7,33 +7,43 @@
   .paymentsTable {
     border-collapse: collapse;
     width: 100%;
+    display: block;
 
-    th,
-    td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid var(--color-dark-300);
-    }
+    table {
+      width: 100%;
+      min-width: 100%;
+      border-collapse: collapse;
 
-    th {
-      font-size: var(--font-size-l);
-      color: var(--color-light-300);
-      background: var(--color-dark-500);
-    }
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        box-sizing: border-box;
+        border-bottom: 1px solid var(--color-dark-300);
+      }
 
-    tr:hover {
-      background: var(--color-dark-300);
-    }
+      th {
+        font-size: var(--font-size-l);
+        color: var(--color-light-300);
+        background: var(--color-dark-500);
+        position: sticky;
+        top: 0;
+      }
 
-    &.active {
-      color: #fff;
-      background: var(--color-light-100);
-    }
+      tr:hover {
+        background: var(--color-dark-300);
+      }
 
-    td {
-      font-size: var(--font-size-m);
-      color: var(--color-light-300);
+      &.active {
+        color: #fff;
+        background: var(--color-light-100);
+      }
+
+      td {
+        font-size: var(--font-size-m);
+        color: var(--color-light-300);
+        white-space: nowrap;
+      }
     }
   }
-
 }
