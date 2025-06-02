@@ -1,8 +1,9 @@
 import React, {useCallback} from 'react';
 import { Typography } from '@/components/Typography';
 import styles from './table.module.scss';
+import {SortDirection} from "@/generated/graphql";
 
-type TableContext = {
+export type TableContext = {
     refetch?: () => void;
     onUserDetails?: (id: number) => void;
     onPaymentDetails?: (id: number) => void;
@@ -14,10 +15,10 @@ export type TableColumn<T extends Record<string, unknown>> = {
     sortable?: boolean;
     render?: (
         item: T,
-        value: T[keyof T],
+        value: unknown,
         context?: TableContext
     ) => React.ReactNode;
-    accessor?: string | ((item: T) => T[keyof T]);
+    accessor?: keyof T | ((item: T) => T[keyof T]);
 };
 
 export type UniversalTableProps<T extends Record<string, unknown>> = {
@@ -26,7 +27,7 @@ export type UniversalTableProps<T extends Record<string, unknown>> = {
     loading?: boolean;
     error?: string;
     sortBy?: string;
-    sortDirection?: 'asc' | 'desc';
+    sortDirection?: SortDirection;
     onSortChange?: (column: string) => void;
     activeKey?: string | null;
     tableClassName?: string;
@@ -36,7 +37,7 @@ export type UniversalTableProps<T extends Record<string, unknown>> = {
     context?: TableContext;
 };
 
-export const Table = React.memo(<T extends Record<string, unknown>>({
+export const Table = <T extends Record<string, unknown>>({
                                                              data = [],
                                                              columns,
                                                              loading = false,
@@ -111,7 +112,7 @@ export const Table = React.memo(<T extends Record<string, unknown>>({
     return (
         <div className={styles.tableContainer}>
             <div className={`${styles.tableWrapper} ${tableClassName}`}>
-                <table className={styles.table} style={{ width: '100%' }}>
+                <table className={styles.table}>
                     <thead>
                     <tr>
                         {columns.map((column) => (
@@ -130,8 +131,8 @@ export const Table = React.memo(<T extends Record<string, unknown>>({
                     </tr>
                     </thead>
                     <tbody>
-                    {data.map((item, index) => (
-                        <tr key={item.id} className={rowClassName}>
+                    {data?.map((item, index) => (
+                        <tr key={String(item.id)} className={rowClassName}>
                             {columns.map((column) => (
                                 <td key={`${item.id || index}-${column.key}`}>
                                     {renderCellValue(item, column)}
@@ -144,4 +145,4 @@ export const Table = React.memo(<T extends Record<string, unknown>>({
             </div>
         </div>
     );
-});
+};

@@ -1,30 +1,35 @@
-import React, { useCallback, useMemo } from "react";
+import {useCallback, useMemo} from "react";
 
-import { useSortBy } from "@/libs/hooks/useSort";
+import {useSortBy} from "@/libs/hooks/useSort";
 import usePagination from "@/libs/hooks/usePagination";
+import {SortDirection} from "@/generated/graphql";
 
-export const useAction = () => {
-    const {
-        currentPage,
-        setCurrentPage,
-        pageSize,
-        setPageSize,
-        sortBy,
-        setSortBy
-    } = usePagination();
 
-    const {
-        activeKey,
-        sort,
-        onSortChange,
-        icon
-    } = useSortBy();
+type UseActionReturn = {
+    paginationOptions: { label: string; value: string }[]
+    onPageSizeChange: (value: number) => void
+    onCurrentPageChange: (value: number | string) => void
+    handleSortChange: (key: string) => void;
+    icon: (key: string) => React.ReactNode;
+    activeKey: string | null;
+    sort: SortDirection;
+    pageSize: number;
+    currentPage: number | string;
+    sortBy: string;
+    setSortBy: (key: string) => void
+    setCurrentPage: React.Dispatch<React.SetStateAction<number | string>>;
+    setPageSize: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const useAction = (): UseActionReturn => {
+    const {currentPage, setCurrentPage, pageSize, setPageSize, sortBy, setSortBy} = usePagination();
+    const {activeKey, sort, onSortChange, icon} = useSortBy();
 
     const paginationOptions = useMemo(
         () => [
-            { label: '10', value: '10' },
-            { label: '20', value: '20' },
-            { label: '30', value: '30' },
+            {label: '10', value: '10'},
+            {label: '20', value: '20'},
+            {label: '30', value: '30'},
         ],
         []
     );
@@ -45,9 +50,10 @@ export const useAction = () => {
     );
 
     const handleSortChange = useCallback(
-        (column: string) => {
-            onSortChange(column);
-            setSortBy(column);
+        (key: string) => {
+            console.log('handleSortChange called with key:', key);
+            onSortChange(key);
+            setSortBy(key);
         },
         [onSortChange, setSortBy]
     );
@@ -63,6 +69,8 @@ export const useAction = () => {
         pageSize,
         currentPage,
         sortBy,
-        setCurrentPage
+        setSortBy,
+        setCurrentPage,
+        setPageSize
     };
 };

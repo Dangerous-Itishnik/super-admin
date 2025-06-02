@@ -1,6 +1,9 @@
-import {useMemo} from "react";
-import {TableColumn} from "@/components/Table/table";
-import {Follow, Payment} from "@/generated/graphql";
+import React, {useMemo} from "react";
+import {TableColumn} from "@/components/Table/Table";
+import {Follow, Payment, User} from "@/generated/graphql";
+import DropdownSelect from "@/features/users/DropdownSelect/DropdownSelect";
+import {Block} from "@/assets/icons/components";
+
 
 export const useFollowersTableConfig = () => {
     const columns: TableColumn<Follow>[] = useMemo(() => [
@@ -85,3 +88,63 @@ export const usePaymentsTableConfig = () => {
 
     return { columns }
 }
+
+export const useUsersTableConfig = () => {
+    const columns: TableColumn<User>[] = useMemo(() => [
+        {
+            key: 'id',
+            label: 'User ID',
+            accessor: 'id'
+        },
+        {
+            key: 'userName',
+            label: 'Username',
+            sortable: true,
+            render: (user) => (
+                user.userBan ? (
+                    <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                        <Block/> {user.userName}
+                    </div>
+                ) : (
+                    user.userName
+                )
+            ),
+            accessor: 'userName'
+        },
+        {
+            key: 'profileLink',
+            label: 'Profile link',
+            render: (user, _value, context) => (
+                <a
+                    href={`/users/${user.id}/info`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        context?.onUserDetails?.(user.id);
+                    }}
+                >
+                    {user.userName}
+                </a>
+            )
+        },
+        {
+            key: 'createdAt',
+            label: 'Registration Date',
+            sortable: true,
+            render: (user) => new Date(user.createdAt).toLocaleDateString(),
+            accessor: 'createdAt'
+        },
+        {
+            key: 'actions',
+            label: 'Actions',
+            render: (user, _value, context) => (
+                <DropdownSelect
+                    user={user}
+                    refetch={context?.refetch ?? (() => {})}
+                    onUserDetails={() => context?.onUserDetails?.(user.id)}
+                />
+            )
+        }
+    ], []);
+
+    return { columns };
+};

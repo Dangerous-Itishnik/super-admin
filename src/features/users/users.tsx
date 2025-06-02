@@ -1,25 +1,34 @@
 'use client'
 import {
-    GetUserQuery, GetUsersQuery,
-    PaginationModel,
     useGetUsersQuery,
     UserBlockStatus,
 } from '@/generated/graphql'
 import {Pagination} from '@/components/pagination/Pagination'
 import React, {useCallback, useMemo, useState} from 'react'
-import usePagination from '@/libs/hooks/usePagination'
 import UserSearch from '@/components/Search/searchUser'
-import {useSortBy} from '@/libs/hooks/useSort'
-import UsersTable from '@/features/users/UserTable'
+import {UsersTable} from '@/features/users/UserTable'
 import {SelectCustom} from '@/components/select/select'
 import styles from './users.module.scss'
 import {useRouter} from "next/navigation";
+import {useAction} from "@/libs/hooks/useAction";
 
 const Users = () => {
     const [valueStatus, setValueStatus] = useState<UserBlockStatus>(UserBlockStatus.All)
-    const {icon, onSortChange, sort} = useSortBy()
     const [valueSearch, setValueSearch] = useState<string>('')
-    const {currentPage, setCurrentPage, pageSize, setPageSize, setSortBy, sortBy} = usePagination()
+    const {
+        icon,
+        sort,
+        handleSortChange,
+        paginationOptions,
+        currentPage,
+        setCurrentPage,
+        pageSize,
+        setPageSize,
+        sortBy,
+    } = useAction();
+
+
+
     const router = useRouter()
     const {data, refetch} = useGetUsersQuery({
         variables: {
@@ -32,26 +41,6 @@ const Users = () => {
         },
     })
 
-    const sortByMap = useMemo(
-        () => ({
-            name: 'userName',
-            date: 'createdAt',
-        }),
-        []
-    )
-
-    const onChangeSortBy = useCallback(
-        (e: React.MouseEvent<HTMLTableCellElement, MouseEvent>, key: string) => {
-            const newSortBy = sortByMap[key]
-            if (!newSortBy) {
-                console.warn('Invalid sort key:', key)
-                return
-            }
-            setSortBy(newSortBy)
-            onSortChange(key)
-        },
-        [sortByMap, onSortChange, setSortBy]
-    )
     const onPageSizeChange = useCallback(
         (value: number) => {
             setPageSize(value)
@@ -83,15 +72,6 @@ const Users = () => {
         [setCurrentPage]
     )
 
-    const paginationOptions = useMemo(
-        () => [
-            {label: '10', value: '10'},
-            {label: '20', value: '20'},
-            {label: '30', value: '30'},
-        ],
-        []
-    )
-
 
     const statusOptions = useMemo(
         () => [
@@ -104,7 +84,7 @@ const Users = () => {
 
     const handleUserDetails = useCallback((userId: number) => {
         router.push(`/users/${userId}/info`)
-    },[router])
+    }, [router])
 
     return (
         <>
@@ -118,11 +98,14 @@ const Users = () => {
                 />
             </div>
             <UsersTable
-                data={data}
+                data={data?.getUsers?.users}
                 icon={icon}
-                onChangeSortBy={onChangeSortBy}
-                refetch={refetch}
-                onUserDetails={handleUserDetails}
+                onChangeSortBy={handleSortChange}
+                context={{
+                    refetch,
+                    onUserDetails: handleUserDetails
+                }}
+
             />
             <Pagination
                 options={paginationOptions}

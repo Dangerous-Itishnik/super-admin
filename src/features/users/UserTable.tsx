@@ -1,40 +1,36 @@
-import UserRow from '@/features/users/UserRow'
-import styles from './users.module.scss'
-import {User} from '@/generated/graphql'
+import { User} from '@/generated/graphql'
 import React from 'react'
+import {useUsersTableConfig} from "@/features/UserDetails/configs";
+import {Table, TableContext} from "@/components/Table/Table";
+import {useAction} from "@/libs/hooks/useAction";
+
+
 
 type UsersTableProps = {
-    data: { getUsers: { users: User[] } }
+    data: User[];
+    context: TableContext;
     icon: (key: string) => React.ReactNode
-    onChangeSortBy: (e: React.MouseEvent<HTMLTableCellElement, MouseEvent>, key: string) => void
-    refetch: () => void
-    onUserDetails: (userId: number) => void
-    ref?: React.RefObject<HTMLTableElement>
-}
+    onChangeSortBy: (key: string) => void;
+};
 
-const UsersTable = React.memo(
-    React.forwardRef<HTMLTableElement, UsersTableProps>(
-        ({data, icon, onChangeSortBy, refetch, onUserDetails }, ref) => {
-            return (
-                <table ref={ref} className={styles.table}>
-                    <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th onClick={e => onChangeSortBy(e, 'name')}>Username {icon('name')}</th>
-                        <th>Profile link</th>
-                        <th onClick={e => onChangeSortBy(e, 'date')}>Date {icon('date')}</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {data?.getUsers.users.map(user => (
-                        <UserRow key={user.id} user={user} refetch={refetch}  onUserDetails={onUserDetails}/>
-                    ))}
-                    </tbody>
-                </table>
-            )
-        }
-    )
-)
+export const UsersTable = React.memo(
+    React.forwardRef<HTMLTableElement, UsersTableProps>(({ data, context, icon, onChangeSortBy }, ref) => {
+        const { columns } = useUsersTableConfig();
+        const { activeKey, sort, sortBy } = useAction();
 
-export default UsersTable
+        return (
+            <div ref={ref}>
+                <Table
+                    data={data}
+                    columns={columns}
+                    sortIcon={icon}
+                    onSortChange={onChangeSortBy}
+                    activeKey={activeKey}
+                    sortBy={sortBy}
+                    sortDirection={sort}
+                    context={context}
+                />
+            </div>
+        );
+    })
+);

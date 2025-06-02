@@ -23,6 +23,7 @@ $statusFilter: UserBlockStatus!
                 avatars {
                     url
                 }
+                createdAt
             }
             createdAt
             userBan {
