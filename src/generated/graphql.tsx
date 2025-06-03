@@ -436,7 +436,7 @@ export type GetUsersQueryVariables = Exact<{
 }>;
 
 
-export type GetUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', users: Array<{ __typename?: 'User', id: number, email: string, userName: string, createdAt: any, profile: { __typename?: 'Profile', id: number, avatars?: Array<{ __typename?: 'Avatar', url?: string | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null }>, pagination: { __typename?: 'PaginationModel', page: number, pagesCount: number, pageSize: number, totalCount: number } } };
+export type GetUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', users: Array<{ __typename?: 'User', id: number, email: string, userName: string, createdAt: any, profile: { __typename?: 'Profile', id: number, createdAt: any, avatars?: Array<{ __typename?: 'Avatar', url?: string | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null }>, pagination: { __typename?: 'PaginationModel', page: number, pagesCount: number, pageSize: number, totalCount: number } } };
 
 
 export const BanUserDocument = gql`
@@ -885,6 +885,7 @@ export const GetUsersDocument = gql`
         avatars {
           url
         }
+        createdAt
       }
       createdAt
       userBan {

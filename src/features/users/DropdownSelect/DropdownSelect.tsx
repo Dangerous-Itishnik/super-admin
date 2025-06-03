@@ -72,8 +72,10 @@ const DropdownSelect = ({user, refetch, onUserDetails}: Props) => {
     const handleBan = async () => {
         if (user.userBan) {
             await userUnBan(user.id)
+            closeBanModel()
         } else {
             await userBan(user.id)
+            closeBanModel()
         }
     }
 

@@ -32,7 +32,7 @@ const Users = () => {
     const router = useRouter()
     const {data, refetch} = useGetUsersQuery({
         variables: {
-            pageSize: 8,
+            pageSize: 10,
             pageNumber: currentPage as number,
             sortBy,
             sortDirection: sort,
@@ -98,7 +98,7 @@ const Users = () => {
                 />
             </div>
             <UsersTable
-                data={data?.getUsers?.users}
+                data={data?.getUsers?.users ?? []}
                 icon={icon}
                 onChangeSortBy={handleSortChange}
                 context={{

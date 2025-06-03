@@ -1,4 +1,4 @@
-import {Payment, useGetPaymentsByUserQuery} from "@/generated/graphql";
+import {useGetPaymentsByUserQuery} from "@/generated/graphql";
 import {useParams} from "next/navigation";
 import {useAction} from "@/libs/hooks/useAction";
 
@@ -32,14 +32,11 @@ const Payments = () => {
     })
 
     const {columns} = usePaymentsTableConfig()
-    const payments: Payment[] = data?.getPaymentsByUser?.items?.flatMap(
-        (sub) => sub.payments || []
-    ) || [];
 
     return (
         <div>
             <Table
-                data={payments}
+                data={data?.getPaymentsByUser?.items ?? []}
                 columns={columns}
                 loading={loading}
                 error={error?.message}

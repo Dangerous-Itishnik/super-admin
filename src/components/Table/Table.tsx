@@ -6,7 +6,7 @@ import {SortDirection} from "@/generated/graphql";
 export type TableContext = {
     refetch?: () => void;
     onUserDetails?: (id: number) => void;
-    onPaymentDetails?: (id: number) => void;
+    //onPaymentDetails?: (id: number) => void;
 }
 
 export type TableColumn<T extends Record<string, unknown>> = {
@@ -74,12 +74,10 @@ export const Table = <T extends Record<string, unknown>>({
                 value = item[column.key as keyof T];
             }
 
-            // Use custom render function if provided
             if (column.render) {
                 return column.render(item, value, context);
             }
 
-            // Format dates
             if (value instanceof Date) {
                 return value.toLocaleDateString('en-US');
             }
@@ -146,3 +144,4 @@ export const Table = <T extends Record<string, unknown>>({
         </div>
     );
 };
+export default React.memo(Table);

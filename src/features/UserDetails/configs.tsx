@@ -1,6 +1,6 @@
 import React, {useMemo} from "react";
 import {TableColumn} from "@/components/Table/Table";
-import {Follow, Payment, User} from "@/generated/graphql";
+import {Follow, Payment, PaymentPaginationModel, SubscriptionByPaymentModel, User} from "@/generated/graphql";
 import DropdownSelect from "@/features/users/DropdownSelect/DropdownSelect";
 import {Block} from "@/assets/icons/components";
 
@@ -56,33 +56,35 @@ export const useFollowingTableConfig = () => {
 }
 
 export const usePaymentsTableConfig = () => {
-    const columns: TableColumn<Payment>[] = useMemo(() => [
+    const columns: TableColumn<SubscriptionByPaymentModel>[] = useMemo(() => [
         {
             key: 'dateOfPayment',
             label: 'Date of Payment',
-            render: (payment: Payment) =>
-                new Date(payment.createdAt).toLocaleDateString(),
+            render: (item) =>
+                new Date(item.dateOfPayment).toLocaleDateString(),
             sortable: true,
         },
         {
             key: 'endDate',
             label: 'End Date of Subscription',
-            render: (payment: Payment) =>
-                new Date(payment.endDate).toLocaleDateString(),
+            render: (item: SubscriptionByPaymentModel) =>
+                new Date(item.endDate).toLocaleDateString(),
         },
         {
             key: 'price',
             label: 'Amount, $',
-            render: (payment) => `$${payment.amount}`,
+            render: (item) => `${item.price}`,
             sortable: true,
         },
         {
             key: 'type',
             label: 'Subscription Type',
+            render: (item) => `${item.type}`
         },
         {
             key: 'paymentType',
             label: 'Payment Type',
+            render: (item) => `${item.paymentType}`
         },
     ], [])
 
