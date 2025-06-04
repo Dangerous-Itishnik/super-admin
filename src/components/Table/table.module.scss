@@ -1,4 +1,4 @@
-.profileSettings {
+.tableContainer {
   padding: 20px;
   color: var(--color-light-500);
   background: var(--color-dark-900);
@@ -6,11 +6,11 @@
 
   .tableWrapper {
     border-collapse: collapse;
-    width: 100%;
+    width: 972px;
     display: block;
 
-    table {
-      width: 100%;
+    .table {
+      width: 972px;
       border-collapse: collapse;
 
       th,

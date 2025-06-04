@@ -1,7 +1,6 @@
 import {useGetFollowersQuery} from "@/generated/graphql";
 import {useParams} from "next/navigation";
-import {Table} from "@/components/Table/table"
-import styles from "./followers.module.scss";
+import {Table} from "@/components/Table/Table"
 import {useAction} from "@/libs/hooks/useAction";
 import {useFollowersTableConfig} from "@/features/UserDetails/configs";
 import {Pagination} from "@/components/pagination/Pagination";
@@ -34,13 +33,12 @@ export default function Followers() {
     })
 
     return (
-        <div className={styles.profileSettings}>
+        <div>
             <Table
                 data={data?.getFollowers.items || []}
                 columns={columns}
                 loading={loading}
                 error={error?.message}
-                tableClassName={styles.paymentsTable}
                 sortIcon={icon}
                 onSortChange={handleSortChange}
                 activeKey={activeKey}

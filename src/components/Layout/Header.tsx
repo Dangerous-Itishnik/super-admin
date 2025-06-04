@@ -12,7 +12,7 @@ const Header: React.FC = () => {
       return 'User Details'
     } else if (pathname === '/users') {
       return 'Users List'
-    } else if (pathname === '/dashboard') {
+    } else if (pathname === '/payments') {
       return 'Dashboard'
     }
     return 'Super Admin Panel'

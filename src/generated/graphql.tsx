@@ -400,6 +400,17 @@ export type GetFollowingQueryVariables = Exact<{
 
 export type GetFollowingQuery = { __typename?: 'Query', getFollowing: { __typename?: 'FollowPaginationModel', pagesCount: number, page: number, pageSize: number, totalCount: number, items: Array<{ __typename?: 'Follow', id: number, userId: number, userName?: string | null, createdAt: any }> } };
 
+export type GetPaymentsQueryVariables = Exact<{
+  pageSize: Scalars['Int']['input'];
+  pageNumber: Scalars['Int']['input'];
+  sortBy: Scalars['String']['input'];
+  sortDirection?: InputMaybe<SortDirection>;
+  searchTerm: Scalars['String']['input'];
+}>;
+
+
+export type GetPaymentsQuery = { __typename?: 'Query', getPayments: { __typename?: 'PaymentsPaginationModel', pagesCount: number, page: number, pageSize: number, totalCount: number, items: Array<{ __typename?: 'SubscriptionPaymentsModel', id?: number | null, userId?: number | null, paymentMethod: PaymentMethod, amount?: number | null, currency?: CurrencyType | null, endDate?: any | null, type: SubscriptionType, userName: string, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null }> } };
+
 export type GetPaymentsByUserQueryVariables = Exact<{
   userId: Scalars['Int']['input'];
   pageSize: Scalars['Int']['input'];
@@ -419,6 +430,17 @@ export type GetPostsByUserQueryVariables = Exact<{
 
 export type GetPostsByUserQuery = { __typename?: 'Query', getPostsByUser: { __typename?: 'PostsByUserModel', pageSize: number, pagesCount: number, totalCount: number, items?: Array<{ __typename?: 'ImagePost', id?: number | null, createdAt?: any | null, url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null } };
 
+export type GetPostsQueryVariables = Exact<{
+  endCursorPostId: Scalars['Int']['input'];
+  searchTerm: Scalars['String']['input'];
+  pageSize: Scalars['Int']['input'];
+  sortBy: Scalars['String']['input'];
+  sortDirection?: InputMaybe<SortDirection>;
+}>;
+
+
+export type GetPostsQuery = { __typename?: 'Query', getPosts: { __typename?: 'PostsPaginationModel', pagesCount: number, pageSize: number, totalCount: number, items: Array<{ __typename?: 'Post', id: number, ownerId: number, description: string, createdAt: any, updatedAt: any, images?: Array<{ __typename?: 'ImagePost', id?: number | null, createdAt?: any | null, url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null, postOwner: { __typename?: 'PostOwnerModel', id: number, userName: string, firstName?: string | null, lastName?: string | null, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null }> } };
+
 export type GetUserQueryVariables = Exact<{
   userId: Scalars['Int']['input'];
 }>;
@@ -436,7 +458,7 @@ export type GetUsersQueryVariables = Exact<{
 }>;
 
 
-export type GetUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', users: Array<{ __typename?: 'User', id: number, email: string, userName: string, createdAt: any, profile: { __typename?: 'Profile', id: number, avatars?: Array<{ __typename?: 'Avatar', url?: string | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null }>, pagination: { __typename?: 'PaginationModel', page: number, pagesCount: number, pageSize: number, totalCount: number } } };
+export type GetUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', users: Array<{ __typename?: 'User', id: number, email: string, userName: string, createdAt: any, profile: { __typename?: 'Profile', id: number, createdAt: any, avatars?: Array<{ __typename?: 'Avatar', url?: string | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null }>, pagination: { __typename?: 'PaginationModel', page: number, pagesCount: number, pageSize: number, totalCount: number } } };
 
 
 export const BanUserDocument = gql`
@@ -685,6 +707,75 @@ export type GetFollowingQueryHookResult = ReturnType<typeof useGetFollowingQuery
 export type GetFollowingLazyQueryHookResult = ReturnType<typeof useGetFollowingLazyQuery>;
 export type GetFollowingSuspenseQueryHookResult = ReturnType<typeof useGetFollowingSuspenseQuery>;
 export type GetFollowingQueryResult = Apollo.QueryResult<GetFollowingQuery, GetFollowingQueryVariables>;
+export const GetPaymentsDocument = gql`
+    query getPayments($pageSize: Int!, $pageNumber: Int!, $sortBy: String!, $sortDirection: SortDirection, $searchTerm: String!) {
+  getPayments(
+    searchTerm: $searchTerm
+    pageSize: $pageSize
+    sortBy: $sortBy
+    pageNumber: $pageNumber
+    sortDirection: $sortDirection
+  ) {
+    items {
+      id
+      userId
+      paymentMethod
+      amount
+      currency
+      endDate
+      type
+      userName
+      avatars {
+        url
+        width
+        height
+        fileSize
+      }
+    }
+    pagesCount
+    page
+    pageSize
+    totalCount
+  }
+}
+    `;
+
+/**
+ * __useGetPaymentsQuery__
+ *
+ * To run a query within a React component, call `useGetPaymentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPaymentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPaymentsQuery({
+ *   variables: {
+ *      pageSize: // value for 'pageSize'
+ *      pageNumber: // value for 'pageNumber'
+ *      sortBy: // value for 'sortBy'
+ *      sortDirection: // value for 'sortDirection'
+ *      searchTerm: // value for 'searchTerm'
+ *   },
+ * });
+ */
+export function useGetPaymentsQuery(baseOptions: Apollo.QueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables> & ({ variables: GetPaymentsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPaymentsQuery, GetPaymentsQueryVariables>(GetPaymentsDocument, options);
+      }
+export function useGetPaymentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPaymentsQuery, GetPaymentsQueryVariables>(GetPaymentsDocument, options);
+        }
+export function useGetPaymentsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPaymentsQuery, GetPaymentsQueryVariables>(GetPaymentsDocument, options);
+        }
+export type GetPaymentsQueryHookResult = ReturnType<typeof useGetPaymentsQuery>;
+export type GetPaymentsLazyQueryHookResult = ReturnType<typeof useGetPaymentsLazyQuery>;
+export type GetPaymentsSuspenseQueryHookResult = ReturnType<typeof useGetPaymentsSuspenseQuery>;
+export type GetPaymentsQueryResult = Apollo.QueryResult<GetPaymentsQuery, GetPaymentsQueryVariables>;
 export const GetPaymentsByUserDocument = gql`
     query getPaymentsByUser($userId: Int!, $pageSize: Int!, $pageNumber: Int!, $sortBy: String!, $sortDirection: SortDirection) {
   getPaymentsByUser(
@@ -810,6 +901,89 @@ export type GetPostsByUserQueryHookResult = ReturnType<typeof useGetPostsByUserQ
 export type GetPostsByUserLazyQueryHookResult = ReturnType<typeof useGetPostsByUserLazyQuery>;
 export type GetPostsByUserSuspenseQueryHookResult = ReturnType<typeof useGetPostsByUserSuspenseQuery>;
 export type GetPostsByUserQueryResult = Apollo.QueryResult<GetPostsByUserQuery, GetPostsByUserQueryVariables>;
+export const GetPostsDocument = gql`
+    query getPosts($endCursorPostId: Int!, $searchTerm: String!, $pageSize: Int!, $sortBy: String!, $sortDirection: SortDirection) {
+  getPosts(
+    endCursorPostId: $endCursorPostId
+    searchTerm: $searchTerm
+    pageSize: $pageSize
+    sortBy: $sortBy
+    sortDirection: $sortDirection
+  ) {
+    pagesCount
+    pageSize
+    totalCount
+    items {
+      images {
+        id
+        createdAt
+        url
+        width
+        height
+        fileSize
+      }
+      id
+      ownerId
+      description
+      createdAt
+      updatedAt
+      postOwner {
+        id
+        userName
+        firstName
+        lastName
+        avatars {
+          url
+          width
+          height
+          fileSize
+        }
+      }
+      userBan {
+        reason
+        createdAt
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetPostsQuery__
+ *
+ * To run a query within a React component, call `useGetPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPostsQuery({
+ *   variables: {
+ *      endCursorPostId: // value for 'endCursorPostId'
+ *      searchTerm: // value for 'searchTerm'
+ *      pageSize: // value for 'pageSize'
+ *      sortBy: // value for 'sortBy'
+ *      sortDirection: // value for 'sortDirection'
+ *   },
+ * });
+ */
+export function useGetPostsQuery(baseOptions: Apollo.QueryHookOptions<GetPostsQuery, GetPostsQueryVariables> & ({ variables: GetPostsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPostsQuery, GetPostsQueryVariables>(GetPostsDocument, options);
+      }
+export function useGetPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPostsQuery, GetPostsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPostsQuery, GetPostsQueryVariables>(GetPostsDocument, options);
+        }
+export function useGetPostsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetPostsQuery, GetPostsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPostsQuery, GetPostsQueryVariables>(GetPostsDocument, options);
+        }
+export type GetPostsQueryHookResult = ReturnType<typeof useGetPostsQuery>;
+export type GetPostsLazyQueryHookResult = ReturnType<typeof useGetPostsLazyQuery>;
+export type GetPostsSuspenseQueryHookResult = ReturnType<typeof useGetPostsSuspenseQuery>;
+export type GetPostsQueryResult = Apollo.QueryResult<GetPostsQuery, GetPostsQueryVariables>;
 export const GetUserDocument = gql`
     query getUser($userId: Int!) {
   getUser(userId: $userId) {
@@ -885,6 +1059,7 @@ export const GetUsersDocument = gql`
         avatars {
           url
         }
+        createdAt
       }
       createdAt
       userBan {

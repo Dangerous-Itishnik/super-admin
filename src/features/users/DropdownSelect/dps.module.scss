@@ -13,3 +13,50 @@
   display: flex;
   flex-direction: column;
 }
+.delete{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  cursor: pointer
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.ban{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 30px;
+  min-width: 323px;
+}
+.input {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.input input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.input input:focus {
+  outline: none;
+  border-color: #3f51b5;
+  box-shadow: 0 0 0 1px #3f51b5;
+}
+
+.icon{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

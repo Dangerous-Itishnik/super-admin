@@ -1,6 +1,5 @@
-'use client'
-import React from 'react';
 import Users from "@/features/users/users";
+
 
 const Page = () => {
 

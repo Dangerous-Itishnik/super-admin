@@ -4,7 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="add" />
+    <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="add">
+      <change afterPath="$PROJECT_DIR$/src/app/(board)/payments/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(board)/posts/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Post/Post.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Post/post.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SmallAvatar/SmallAvatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/PaymentsList/PaymentsList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/Posts/Posts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/Posts/posts.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphql/queries/getPayments.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphql/queries/getPosts.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(board)/dashboard/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(board)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icons/svg/image.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/image.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProfileHeader/profileHeader.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileHeader/profileHeader.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/SideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/sideBar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/sideBar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/select.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/select.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/configs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/configs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/users/users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/users.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/graphql.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,6 +173,7 @@
       <workItem from="1748269055688" duration="9509000" />
       <workItem from="1748410758698" duration="35430000" />
       <workItem from="1748515575913" duration="2057000" />
+      <workItem from="1748848986246" duration="39005000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <option name="closed" value="true" />
@@ -178,7 +215,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748517469806</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add">
+      <option name="closed" value="true" />
+      <created>1748870726354</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748870726354</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add">
+      <option name="closed" value="true" />
+      <created>1748936336321</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748936336322</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

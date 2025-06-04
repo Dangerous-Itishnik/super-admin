@@ -1,20 +1,20 @@
 'use client'
 import React, { ReactNode } from 'react'
 
-import Sidebar from '@/components/layout/SideBar'
+import Sidebar from '@/components/Layout/SideBar'
 import { useAuth } from '@/libs/hooks/AuthHook.'
-import Header from '@/components/layout/Header'
+import Header from '@/components/Layout/Header'
 import styles from './board.module.scss'
 
 interface LayoutProps {
   children: ReactNode
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout = ({ children }: LayoutProps) => {
   const { isLoading } = useAuth()
 
   if (isLoading) {
-    return <div>Lade...</div>
+    return <div>Loading...</div>
   }
   return (
     <div className={styles.bodyContainer}>

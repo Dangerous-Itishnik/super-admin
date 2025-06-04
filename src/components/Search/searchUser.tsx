@@ -6,7 +6,7 @@ type UserSearchProps = {
   onSearch: (searchTerm: string) => void
 }
 
-const UserSearch: React.FC<UserSearchProps> = ({ onSearch }) => {
+const UserSearch = ({ onSearch }:UserSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('')
 
 

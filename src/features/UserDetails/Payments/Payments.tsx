@@ -1,9 +1,8 @@
 import {useGetPaymentsByUserQuery} from "@/generated/graphql";
 import {useParams} from "next/navigation";
-import styles from "./payments.module.scss"
 import {useAction} from "@/libs/hooks/useAction";
 
-import {Table} from "@/components/Table/table";
+import {Table} from "@/components/Table/Table";
 import {usePaymentsTableConfig} from "@/features/UserDetails/configs";
 import {Pagination} from "@/components/pagination/Pagination";
 
@@ -35,13 +34,12 @@ const Payments = () => {
     const {columns} = usePaymentsTableConfig()
 
     return (
-        <div className={styles.profileSettings}>
+        <div>
             <Table
-                data={data?.getPaymentsByUser?.items || []}
+                data={data?.getPaymentsByUser?.items ?? []}
                 columns={columns}
                 loading={loading}
                 error={error?.message}
-                tableClassName={styles.paymentsTable}
                 sortIcon={icon}
                 onSortChange={handleSortChange}
                 activeKey={activeKey}

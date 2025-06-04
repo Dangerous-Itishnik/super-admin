@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import { useGetUserQuery } from '@/generated/graphql'
 import Link from "next/link"
 import ArrowBackOutline from "@/assets/icons/components/ArrowBackOutline";
+import React from "react";
 
 const ProfileHeader = () => {
     const { userId } = useParams()
@@ -13,6 +14,7 @@ const ProfileHeader = () => {
     const { data, error, loading } = useGetUserQuery({
         variables: { userId: userIdNum },
         skip: isNaN(userIdNum),
+        fetchPolicy: 'cache-first',
     })
     const profile = data?.getUser?.profile
     const userName = data?.getUser?.userName
@@ -68,5 +70,5 @@ const ProfileHeader = () => {
     )
 }
 
-export default ProfileHeader
+export default React.memo(ProfileHeader);
 

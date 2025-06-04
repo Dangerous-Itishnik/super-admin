@@ -72,7 +72,12 @@
   object-fit: cover;
   border-radius: 50%;
 }
-
+.avatarSmall{
+  width: 10%;
+  height: 10%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 .container {
   display: flex;
   flex-direction: column;

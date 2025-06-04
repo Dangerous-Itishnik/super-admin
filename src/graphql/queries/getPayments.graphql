@@ -1,0 +1,35 @@
+query getPayments (
+    $pageSize: Int!,
+    $pageNumber: Int!,
+    $sortBy: String!,
+    $sortDirection: SortDirection
+    $searchTerm: String!,
+){
+    getPayments(
+        searchTerm: $searchTerm,
+        pageSize: $pageSize,
+        sortBy: $sortBy,
+        pageNumber: $pageNumber,
+        sortDirection: $sortDirection){
+        items{
+            id
+            userId
+            paymentMethod
+            amount
+            currency
+            endDate
+            type
+            userName
+            avatars{
+                url
+                width
+                height
+                fileSize
+            }
+        }
+        pagesCount
+        page
+        pageSize
+        totalCount
+    }
+}
