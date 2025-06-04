@@ -1,8 +1,16 @@
 import React, {useMemo} from "react";
 import {TableColumn} from "@/components/Table/Table";
-import {Follow, Payment, PaymentPaginationModel, SubscriptionByPaymentModel, User} from "@/generated/graphql";
+import {
+    Follow,
+    SubscriptionByPaymentModel,
+    SubscriptionPaymentsModel,
+    User
+} from "@/generated/graphql";
 import DropdownSelect from "@/features/users/DropdownSelect/DropdownSelect";
 import {Block} from "@/assets/icons/components";
+import Default from "../../assets/icons/svg/person.svg"
+import SmallAvatar from "@/components/SmallAvatar/SmallAvatar";
+
 
 
 export const useFollowersTableConfig = () => {
@@ -150,3 +158,45 @@ export const useUsersTableConfig = () => {
 
     return { columns };
 };
+
+export const usePaymentsAllTableConfig = () => {
+    const columns: TableColumn<SubscriptionPaymentsModel>[] = useMemo(() => [
+        {
+            key: 'userName',
+            label: 'Username',
+            sortable: true,
+            render: (item) => (
+                    <div style={{display: "flex", alignItems: 'center', gap: '8px', }}>
+                       <SmallAvatar url={item.avatars ? item.avatars?.[0]?.url : Default } /> {item.userName}
+                    </div>
+            ),
+            accessor: 'userName'
+        },
+        {
+            key: 'dateOfPayment',
+            label: 'Date added',
+            render: (item) => new Date(item.createdAt).toLocaleDateString(),
+            sortable: true,
+        },
+
+        {
+            key: 'price',
+            label: 'Amount, $',
+            render: (item) => `${item.amount}`,
+            sortable: true,
+        },
+        {
+            key: 'type',
+            label: 'Subscription',
+            render: (item) => `${item.type}`
+        },
+        {
+            key: 'paymentType',
+            label: 'Payment Type',
+            render: (item) => `${item.paymentMethod}`,
+            sortable: true,
+        },
+    ], [])
+
+    return { columns }
+}

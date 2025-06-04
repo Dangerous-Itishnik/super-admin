@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 
 import ArrowRight from '../../assets/icons/components/ArrowForwardOutline'
 import ArrowLeft from '../../assets/icons/components/ArrowIosBackOutline'
-import { OptionsType, SelectCustom } from '../select/select'
+import { OptionsType, SelectCustom } from '@/components/Select/select'
 
 import styles from './pagination.module.scss'
 

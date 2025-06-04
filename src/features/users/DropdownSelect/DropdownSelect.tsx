@@ -5,7 +5,7 @@ import {Button} from '@/components/Button/Button'
 import styles from './dps.module.scss'
 import {InfoModal} from '@/components/InfoModal/InfoModal'
 import {Typography} from '@/components/Typography'
-import {SelectCustom} from '@/components/select/select'
+import {SelectCustom} from '@/components/Select/select'
 import {
     useBanUserMutation,
     User,

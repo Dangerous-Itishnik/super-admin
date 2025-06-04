@@ -5,10 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="add">
+      <change afterPath="$PROJECT_DIR$/src/app/(board)/payments/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(board)/posts/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Post/Post.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Post/post.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SmallAvatar/SmallAvatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/PaymentsList/PaymentsList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/Posts/Posts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/Posts/posts.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphql/queries/getPayments.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphql/queries/getPosts.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfileHeader/ProfileHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileHeader/ProfileHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/Payments/Payments.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/Payments/Payments.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(board)/dashboard/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(board)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icons/svg/image.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/image.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProfileHeader/profileHeader.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileHeader/profileHeader.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/SideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/sideBar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/sideBar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/select.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/select.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/select.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/UserDetails/configs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/configs.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/users/users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/users.tsx" afterDir="false" />
@@ -36,31 +63,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "fork",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/natal/WebstormProjects/super-admin/src/components",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "D:\\super-admin\\node_modules\\stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.lint.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\natal\\WebstormProjects\\super-admin\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "copyright.filetypes.SCSS",
-    "ts.external.directory.path": "C:\\Users\\natal\\WebstormProjects\\super-admin\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fork&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natal/WebstormProjects/super-admin/src/components&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;D:\\super-admin\\node_modules\\stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\natal\\WebstormProjects\\super-admin\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;copyright.filetypes.SCSS&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\natal\\WebstormProjects\\super-admin\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src\components" />
@@ -146,7 +173,7 @@
       <workItem from="1748269055688" duration="9509000" />
       <workItem from="1748410758698" duration="35430000" />
       <workItem from="1748515575913" duration="2057000" />
-      <workItem from="1748848986246" duration="22088000" />
+      <workItem from="1748848986246" duration="39005000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <option name="closed" value="true" />
@@ -196,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748870726354</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add">
+      <option name="closed" value="true" />
+      <created>1748936336321</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748936336322</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

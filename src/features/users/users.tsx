@@ -7,7 +7,7 @@ import {Pagination} from '@/components/pagination/Pagination'
 import React, {useCallback, useMemo, useState} from 'react'
 import UserSearch from '@/components/Search/searchUser'
 import {UsersTable} from '@/features/users/UserTable'
-import {SelectCustom} from '@/components/select/select'
+import {SelectCustom} from '@/components/Select/select'
 import styles from './users.module.scss'
 import {useRouter} from "next/navigation";
 import {useAction} from "@/libs/hooks/useAction";

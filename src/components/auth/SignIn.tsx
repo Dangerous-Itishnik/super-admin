@@ -1,12 +1,12 @@
 'use client'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from '@/libs/hooks/AuthHook.'
 import styles from './singIn.module.scss'
 import {Button} from "@/components/Button/Button";
 
 
 
-const SignInForm: React.FC = () => {
+const SignInForm = () => {
   const [email, setEmail] = useState('admin@gmail.com')
   const [password, setPassword] = useState("admin")
   const [error, setError] = useState('')
