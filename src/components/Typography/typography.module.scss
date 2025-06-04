@@ -1,0 +1,128 @@
+// Миксин для установки типографики
+@mixin typography($fontSize, $lineHeight, $fontWeight) {
+  margin: 0;
+
+  font-size: $fontSize; // Размер шрифта
+  font-weight: $fontWeight; // Жирность шрифта
+  line-height: $lineHeight; // Высота строки
+  color: var(--color-light-100); // Цвет текста
+}
+
+// Классы для различных размеров и стилей текста
+.large {
+  @include typography(
+    var(--font-size-xxl),
+    var(--line-height-l),
+    var(--font-weight-bold)
+  ); // Большой текст
+}
+
+.h1 {
+  @include typography(
+    var(--font-size-xl),
+    var(--line-height-l),
+    var(--font-weight-bold)
+  ); // Заголовок 1 уровня
+}
+
+.h2 {
+  @include typography(
+    var(--font-size-l),
+    var(--line-height-m),
+    var(--font-weight-bold)
+  ); // Заголовок 2 уровня
+}
+
+.h3 {
+  @include typography(
+    var(--font-size-m),
+    var(--line-height-m),
+    var(--font-weight-bold)
+  ); // Заголовок 3 уровня
+}
+
+.body1 {
+  @include typography(
+    var(--font-size-m),
+    var(--line-height-m),
+    var(--font-weight-medium)
+  ); // Основной текст 1 уровня
+}
+
+.subtitle1 {
+  @include typography(
+    var(--font-size-m),
+    var(--line-height-m),
+    var(--font-weight-bold)
+  ); // Подзаголовок 1 уровня
+}
+
+.body2 {
+  @include typography(
+    var(--font-size-s),
+    var(--line-height-m),
+    var(--font-weight-medium)
+  ); // Основной текст 2 уровня
+}
+
+.subtitle2 {
+  @include typography(
+    var(--font-size-s),
+    var(--line-height-m),
+    var(--font-weight-bold)
+  ); // Подзаголовок 2 уровня
+}
+
+.overline {
+  @include typography(
+    var(--font-size-xs),
+    var(--line-height-s),
+    var(--font-weight-bold)
+  ); // Текст над другими элементами
+}
+
+.caption {
+  @include typography(
+    var(--font-size-xs),
+    var(--line-height-s),
+    var(--font-weight-medium)
+  ); // Подпись к изображению
+}
+
+// Стили для ссылок
+.link1,
+.link1:visited {
+  @include typography(
+    var(--font-size-s),
+    var(--line-height-m),
+    var(--font-weight-medium)
+  ); // Ссылка 1 уровня
+
+  cursor: pointer; // Указатель для интерактивного элемента
+  color: var(--color-accent-300); // Цвет ссылки
+  text-decoration: underline; // Подчеркивание
+}
+
+.link2,
+.link2:visited {
+  @include typography(
+    var(--font-size-xs),
+    var(--line-height-s),
+    var(--font-weight-medium)
+  ); // Ссылка 2 уровня
+
+  cursor: pointer; // Указатель для интерактивного элемента
+  color: var(--color-accent-100); // Цвет ссылки
+  text-decoration: underline; // Подчеркивание
+}
+
+// Стили для сообщений об ошибках
+.error {
+  @include typography(
+    var(--font-size-xs),
+    var(--line-height-m),
+    var(--font-weight-medium)
+  ); // Ошибка
+
+  color: var(--color-danger-300); // Цвет сообщения об ошибке
+}

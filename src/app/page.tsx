@@ -1,9 +1,11 @@
-import React from "react";
+import SignInForm from '@/components/auth/SignIn'
+import '../styles/_index.scss'
 
-export default function HomePage() {
-    return (
-        <main>
-            <h1>App Router!</h1>
-        </main>
-    );
+import styles from './page.module.scss'
+export default async function HomePage() {
+  return (
+    <div className={styles.container}>
+      <SignInForm />
+    </div>
+  )
 }

@@ -1,0 +1,42 @@
+query getPaymentsByUser(
+    $userId: Int!,
+    $pageSize: Int!,
+    $pageNumber: Int!,
+    $sortBy: String!,
+    $sortDirection: SortDirection
+){
+    getPaymentsByUser(
+        userId: $userId,
+        pageSize: $pageSize
+        sortBy: $sortBy
+        pageNumber: $pageNumber
+        sortDirection: $sortDirection){
+        items{
+            id
+            businessAccountId
+            status
+            dateOfPayment
+            startDate
+            endDate
+            type
+            price
+            paymentType
+            payments{
+                id
+                userId
+                paymentMethod
+                amount
+                currency
+                createdAt
+                endDate
+                type
+            }
+        }
+        pagesCount
+        page
+        pageSize
+        totalCount
+
+    }
+
+}

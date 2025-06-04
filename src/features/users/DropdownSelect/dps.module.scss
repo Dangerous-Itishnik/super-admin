@@ -1,0 +1,15 @@
+.ellipse {
+  cursor: pointer;
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-light-500);
+
+  &:hover {
+    color: var(--color-accent-900);
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}

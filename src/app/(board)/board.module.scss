@@ -1,0 +1,36 @@
+.bodyContainer {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100dvh;
+
+  color: var(--color-light-100);
+
+  background-color: transparent;
+}
+
+.main {
+  overflow: auto;
+  flex: 1;
+  padding: 20px;
+  color: var(--color-light-100);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (width <= 400px) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.mainBody {
+  overflow: hidden;
+  width: 100%;
+
+  @media (width >= 768px) {
+    display: flex;
+    justify-content: center;
+  }
+}

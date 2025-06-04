@@ -1,0 +1,4 @@
+# removeUser.graphql
+mutation RemoveUser($userId: Int!) {
+    removeUser(userId: $userId)
+}

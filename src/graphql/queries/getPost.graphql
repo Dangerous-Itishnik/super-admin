@@ -1,0 +1,18 @@
+query getPostsByUser($userId: Int!, $endCursorId: Int!) {
+    getPostsByUser(
+        userId: $userId
+        endCursorId: $endCursorId)
+    {
+        items {
+            id
+            createdAt
+            url
+            width
+            height
+            fileSize
+        }
+        pageSize
+        pagesCount
+        totalCount
+    }
+}

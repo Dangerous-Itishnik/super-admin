@@ -1,0 +1,48 @@
+.profileSettings {
+  padding: 20px;
+  color: var(--color-light-500);
+  background: var(--color-dark-900);
+  border-radius: 8px;
+
+  .tableWrapper {
+    border-collapse: collapse;
+    width: 100%;
+    display: block;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        box-sizing: border-box;
+        border-bottom: 1px solid var(--color-dark-300);
+      }
+
+      th {
+        font-size: var(--font-size-l);
+        color: var(--color-light-300);
+        background: var(--color-dark-500);
+        position: sticky;
+        top: 0;
+      }
+
+      tr:hover {
+        background: var(--color-dark-300);
+      }
+
+      &.active {
+        color: #fff;
+        background: var(--color-light-100);
+      }
+
+      td {
+        font-size: var(--font-size-m);
+        color: var(--color-light-300);
+        white-space: nowrap;
+      }
+    }
+  }
+}

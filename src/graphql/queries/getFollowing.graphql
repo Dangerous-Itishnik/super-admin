@@ -1,0 +1,26 @@
+query getFollowing(
+    $userId: Int!,
+    $pageSize: Int!,
+    $sortBy: String!,
+    $sortDirection: SortDirection,
+    $pageNumber: Int!
+){
+    getFollowing(
+        userId: $userId,
+        pageSize: $pageSize,
+        sortBy: $sortBy,
+        sortDirection: $sortDirection,
+        pageNumber: $pageNumber
+    ){
+        items{
+            id
+            userId
+            userName
+            createdAt
+        }
+        pagesCount
+        page
+        pageSize
+        totalCount
+    }
+}
