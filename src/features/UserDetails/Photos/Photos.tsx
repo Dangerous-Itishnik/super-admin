@@ -12,7 +12,6 @@ const Photos = () => {
     const userIdNum = Number(userId)
 
     const {data} = useGetPostsByUserQuery({variables: {userId: userIdNum, endCursorId: postId}})
-    console.log(data)
     return (
         <div className={styles.container}>
             {data?.getPostsByUser?.items?.map((image) => (

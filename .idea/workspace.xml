@@ -5,41 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="add">
-      <change afterPath="$PROJECT_DIR$/src/app/(board)/payments/page.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/(board)/posts/page.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Post/Post.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Post/post.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SmallAvatar/SmallAvatar.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css.map" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.scss" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/PaymentsList/PaymentsList.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/features/Posts/Posts.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/features/Posts/posts.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphql/queries/getPayments.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphql/queries/getPosts.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphql/subscription/sinscription.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphql/subscription/subscription.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/hooks/useObserver.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(board)/dashboard/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(board)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(board)/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icons/svg/image.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/image.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfileHeader/profileHeader.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileHeader/profileHeader.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/searchUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/SignIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/SideBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/header.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/sideBar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/sideBar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/select.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/select.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/configs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/configs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/users/users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/users.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/graphql.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/Photos/Photos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/Photos/Photos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/queries/getPosts.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/queries/getPosts.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/libs/apollo-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/apollo-client.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +38,28 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NatVal2&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NatVal2/super-admin&quot;,
+    &quot;accountId&quot;: &quot;cdd9ba29-ead7-456b-8d88-47c7c532d74b&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;NatVal2&quot;,
+    &quot;repository&quot;: &quot;super-admin&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -67,9 +73,9 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fork&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#1 on fork&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/natal/WebstormProjects/super-admin/src/components&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natal/WebstormProjects/super-admin/src/libs/hooks&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -90,6 +96,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\libs\hooks" />
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src\components" />
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src" />
     </key>
@@ -173,7 +180,11 @@
       <workItem from="1748269055688" duration="9509000" />
       <workItem from="1748410758698" duration="35430000" />
       <workItem from="1748515575913" duration="2057000" />
-      <workItem from="1748848986246" duration="39005000" />
+      <workItem from="1748848986246" duration="48561000" />
+      <workItem from="1749026865159" duration="9954000" />
+      <workItem from="1749036959066" duration="7881000" />
+      <workItem from="1749045821533" duration="13629000" />
+      <workItem from="1749064041583" duration="810000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <option name="closed" value="true" />
@@ -231,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748936336322</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add">
+      <option name="closed" value="true" />
+      <created>1749016674458</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1749016674458</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

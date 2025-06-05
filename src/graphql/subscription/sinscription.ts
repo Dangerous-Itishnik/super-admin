@@ -1,15 +1,9 @@
-query getPosts($endCursorPostId: Int!, $searchTerm: String!, $pageSize: Int!, $sortBy: String!, $sortDirection: SortDirection){
-    getPosts(
-        endCursorPostId: $endCursorPostId,
-        searchTerm: $searchTerm,
-        pageSize: $pageSize,
-        sortBy: $sortBy,
-        sortDirection: $sortDirection
-    ){
-        pageSize
-        totalCount
-        items{
-            images{
+import {gql} from "@apollo/client";
+
+export const POST_ADDED_SUBSCRIPTION = gql`
+    subscription PostAdded($postId: Int!) {
+        postAdded(postId: $postId) {
+            images {
                 id
                 createdAt
                 url
@@ -34,12 +28,6 @@ query getPosts($endCursorPostId: Int!, $searchTerm: String!, $pageSize: Int!, $s
                     fileSize
                 }
             }
-            userBan{
-                reason
-                createdAt
-            }
         }
-
     }
-}
-
+`;

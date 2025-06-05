@@ -1,5 +1,8 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import {ApolloClient, createHttpLink, InMemoryCache, split} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import {GraphQLWsLink} from "@apollo/client/link/subscriptions";
+import {createClient} from "graphql-ws";
+import {getMainDefinition} from "@apollo/client/utilities";
 
 
 const httpLink = createHttpLink({
@@ -7,7 +10,6 @@ const httpLink = createHttpLink({
     credentials: 'include',
 });
 
-// ✅ Auth-Link
 const authLink = setContext((_, { headers }) => {
     const Auth = btoa('admin@gmail.com:admin');
 
@@ -20,13 +22,45 @@ const authLink = setContext((_, { headers }) => {
     };
 });
 
-// ✅ Apollo Client
+const wsLink = new GraphQLWsLink(createClient({
+    url: 'ws://inctagram.work/api/v1/graphql',
+    connectionParams: {
+        headers: {
+            Authorization: `Basic ${btoa('admin@gmail.com:admin')}`,
+        },
+    },
+}));
+
+const splitLink = split(
+    ({ query }) => {
+        const definition = getMainDefinition(query);
+        return (
+            definition.kind === 'OperationDefinition' &&
+            definition.operation === 'subscription'
+        );
+    },
+    wsLink,
+    authLink.concat(httpLink) // für Queries/Mutations
+);
 export const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link: splitLink,
     cache: new InMemoryCache(),
     defaultOptions: {
         watchQuery: {
-            fetchPolicy: 'network-only',
+            fetchPolicy: 'cache-and-network',
         },
     },
-});
+})
+
+
+//{
+//    typePolicies: {
+//        Query: {
+//fields: {
+ //               getPosts: {
+ //                   keyArgs: ['searchTerm', 'sortBy', 'sortDirection'],
+//                },
+//            },
+//        },
+ //   },
+//}
