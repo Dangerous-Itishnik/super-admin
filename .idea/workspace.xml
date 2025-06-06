@@ -4,25 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="add">
-      <change afterPath="$PROJECT_DIR$/src/app/(board)/posts/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Post/Post.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Post/post.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Posts/Posts.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Posts/posts.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphql/subscription/sinscription.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphql/subscription/subscription.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/libs/hooks/useObserver.ts" afterDir="false" />
+    <list default="true" id="c2d6f996-73aa-4795-896a-8acd01c16f4f" name="Changes" comment="add postsList">
+      <change afterPath="$PROJECT_DIR$/src/assets/icons/components/UnBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/BanAndUnban/UserBan.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/Posts/PostSkeleton/PostSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/Posts/PostSkeleton/postSkeleton.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/UserDetailsSkeleton/UserDetailSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/UserDetails/UserDetailsSkeleton/userDetailsSkeleton.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/users/UserSkeleton/UserSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/users/UserSkeleton/userSkeleton.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/hooks/useUserActions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_29_05_2025_13_46_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_29_05_2025_13_46__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(board)/dashboard/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ImageCard/ImageCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImageCard/ImageCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Post/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Post/Post.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Swiper/SwiperSlider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Posts/Posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Posts/Posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/Followers/Followers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/Followers/Followers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/Following/Following.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/Following/Following.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/UserDetails/Payments/Payments.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/Payments/Payments.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/UserDetails/Photos/Photos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/UserDetails/Photos/Photos.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/queries/getPosts.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/queries/getPosts.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/DropdownSelect/DropdownSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/users/UserRow.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/users/users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/users/users.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/graphql.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/subscription/sinscription.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/subscription/subscription.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/subscription/subscription.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/apollo-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/apollo-client.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +84,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;#1 on fork&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/natal/WebstormProjects/super-admin/src/libs/hooks&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natal/WebstormProjects/super-admin/src/features/UserDetails&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -89,23 +98,24 @@
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;npm.lint.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\natal\\WebstormProjects\\super-admin\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;copyright.filetypes.SCSS&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\natal\\WebstormProjects\\super-admin\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\features\UserDetails" />
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src\libs\hooks" />
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src\components" />
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\features\users" />
+      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\components" />
+      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\features\Posts\PostSkeleton" />
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src\features\UserDetails" />
       <recent name="C:\Users\natal\WebstormProjects\super-admin\src\app\(board)\users\[userId]\info\[tabs]" />
-      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\features\users" />
-      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\features" />
-      <recent name="C:\Users\natal\WebstormProjects\super-admin\src\app\(board)" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -184,7 +194,8 @@
       <workItem from="1749026865159" duration="9954000" />
       <workItem from="1749036959066" duration="7881000" />
       <workItem from="1749045821533" duration="13629000" />
-      <workItem from="1749064041583" duration="810000" />
+      <workItem from="1749064041583" duration="25299000" />
+      <workItem from="1749127092693" duration="19424000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <option name="closed" value="true" />
@@ -250,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749016674458</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add postsList">
+      <option name="closed" value="true" />
+      <created>1749104201584</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1749104201584</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +288,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add" />
-    <option name="LAST_COMMIT_MESSAGE" value="add" />
+    <MESSAGE value="add postsList" />
+    <option name="LAST_COMMIT_MESSAGE" value="add postsList" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

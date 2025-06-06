@@ -11,12 +11,18 @@ const Photos = () => {
     const {userId} = useParams()
     const userIdNum = Number(userId)
 
-    const {data} = useGetPostsByUserQuery({variables: {userId: userIdNum, endCursorId: postId}})
+    const {data, loading} = useGetPostsByUserQuery({variables: {userId: userIdNum, endCursorId: postId}})
     return (
         <div className={styles.container}>
-            {data?.getPostsByUser?.items?.map((image) => (
-                <ImageCard post={image} key={image.id}/>
-            ))}
+            {loading ? (
+                Array.from({ length: 8 }).map((_, index) => (
+                    <ImageCard key={`skeleton-${index}`} isSkeleton={true} />
+                ))
+            ) : (
+                data?.getPostsByUser?.items?.map((image) => (
+                    <ImageCard post={image} key={image.id} />
+                ))
+            )}
         </div>
     )
 }

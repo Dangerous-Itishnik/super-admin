@@ -52,15 +52,3 @@ export const client = new ApolloClient({
     },
 })
 
-
-//{
-//    typePolicies: {
-//        Query: {
-//fields: {
- //               getPosts: {
- //                   keyArgs: ['searchTerm', 'sortBy', 'sortDirection'],
-//                },
-//            },
-//        },
- //   },
-//}

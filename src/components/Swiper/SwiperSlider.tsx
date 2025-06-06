@@ -26,7 +26,7 @@ export const SwiperSlider = ({ imagesUrl}: Props) => {
       spaceBetween={10}
       style={{ height: '100%', position: 'relative', width: '100%' }}
     >
-      {imagesUrl?.map((image, index: number) => {
+      {imagesUrl?.map((image) => {
         if (!image.url) {
           return null
         }
@@ -34,11 +34,11 @@ export const SwiperSlider = ({ imagesUrl}: Props) => {
         return (
           <SwiperSlide
             className={styles.img}
-            key={index}
+            key={`${image.url}-${image.createdAt}`}
             style={{ position: 'relative' }}
           >
             <Image
-              alt={`Image ${index}`}
+              alt={`Image`}
               fill
               priority
               sizes={"234px"}

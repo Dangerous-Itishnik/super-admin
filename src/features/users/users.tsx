@@ -4,13 +4,15 @@ import {
     UserBlockStatus,
 } from '@/generated/graphql'
 import {Pagination} from '@/components/pagination/Pagination'
-import React, {useCallback, useMemo, useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import UserSearch from '@/components/Search/searchUser'
 import {UsersTable} from '@/features/users/UserTable'
 import {SelectCustom} from '@/components/Select/select'
 import styles from './users.module.scss'
 import {useRouter} from "next/navigation";
 import {useAction} from "@/libs/hooks/useAction";
+import UserSkeleton from "@/features/users/UserSkeleton/UserSkeleton";
+import {statusOptions} from "@/libs/constants";
 
 const Users = () => {
     const [valueStatus, setValueStatus] = useState<UserBlockStatus>(UserBlockStatus.All)
@@ -28,9 +30,8 @@ const Users = () => {
     } = useAction();
 
 
-
     const router = useRouter()
-    const {data, refetch} = useGetUsersQuery({
+    const {data, refetch, loading, networkStatus, error} = useGetUsersQuery({
         variables: {
             pageSize: 10,
             pageNumber: currentPage as number,
@@ -73,50 +74,80 @@ const Users = () => {
     )
 
 
-    const statusOptions = useMemo(
-        () => [
-            {label: 'All', value: UserBlockStatus.All},
-            {label: 'Blocked', value: UserBlockStatus.Blocked},
-            {label: 'Unblocked', value: UserBlockStatus.Unblocked},
-        ],
-        []
-    )
-
     const handleUserDetails = useCallback((userId: number) => {
         router.push(`/users/${userId}/info`)
     }, [router])
 
-    return (
-        <>
-            <div className={styles.sands}>
-                <UserSearch onSearch={handleSearch}/>
-                <SelectCustom
-                    className={styles.select}
-                    options={statusOptions}
-                    onValueChange={handleStatus}
-                    value={valueStatus}
-                />
-            </div>
-            <UsersTable
-                data={data?.getUsers?.users ?? []}
-                icon={icon}
-                onChangeSortBy={handleSortChange}
-                context={{
-                    refetch,
-                    onUserDetails: handleUserDetails
-                }}
+    const isInitialLoading = loading && !data
+    const isSearching = loading && networkStatus === 4 && !data?.getUsers?.users.length
 
-            />
-            <Pagination
-                options={paginationOptions}
-                pageSize={pageSize}
-                currentPage={currentPage as number}
-                onCurrentPageChange={onCurrentPageChange}
-                onPageSizeChange={onPageSizeChange}
-                portionValue={pageSize.toString()}
-                totalCount={data?.getUsers.pagination.totalCount}
-            />
-        </>
-    )
+    return (
+        <div className={styles.container}>
+            {isInitialLoading ? (
+                <>
+                    <div className={styles.sands}>
+                        <div className={styles.searchSkeleton}></div>
+                        <div className={styles.selectSkeleton}></div>
+
+                    </div>
+                    <UserSkeleton rows={5}/>
+                </>
+            ) : (
+                <>
+                    <div className={styles.sands}>
+                        <UserSearch onSearch={handleSearch}/>
+                        <SelectCustom
+                            className={styles.select}
+                            options={statusOptions}
+                            onValueChange={handleStatus}
+                            value={valueStatus}
+                        />
+                    </div>
+
+                    {isSearching && data?.getUsers?.users.length === 0 ? (
+                        <UserSkeleton rows={5}/>
+                    ) : (
+                        <>
+                            <UsersTable
+                                data={data?.getUsers?.users ?? []}
+                                icon={icon}
+                                onChangeSortBy={handleSortChange}
+                                context={{
+                                    refetch,
+                                    onUserDetails: handleUserDetails
+                                }}
+                            />
+
+                            {!loading && (
+                                <Pagination
+                                    options={paginationOptions}
+                                    pageSize={pageSize}
+                                    currentPage={currentPage as number}
+                                    onCurrentPageChange={onCurrentPageChange}
+                                    onPageSizeChange={onPageSizeChange}
+                                    portionValue={pageSize.toString()}
+                                    totalCount={data?.getUsers.pagination.totalCount}
+                                />
+                            )}
+                        </>
+                    )}
+
+                    {/* No Results State */}
+                    {!loading && data?.getUsers?.users.length === 0 && valueSearch && (
+                        <div className={styles.noResults}>
+                            No users found for "{valueSearch}"
+                        </div>
+                    )}
+
+                    {/* Error State */}
+                    {error && (
+                        <div className={styles.error}>
+                            Error loading users: {error.message}
+                        </div>
+                    )}
+                </>
+            )}
+        </div>
+    );
 }
 export default React.memo(Users)

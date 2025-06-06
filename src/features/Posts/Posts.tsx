@@ -1,21 +1,25 @@
 'use client'
-import {useCallback, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import UserSearch from "@/components/Search/searchUser";
 import Post from "@/components/Post/Post";
-import {useSubscription} from "@apollo/client";
-import {POST_ADDED_SUBSCRIPTION} from "@/graphql/subscription/sinscription";
-import {useGetPostsQuery} from "@/generated/graphql";
+import {
+    GetPostsQuery,
+    PostAddedDocument,
+    PostAddedSubscription,
+    useGetPostsQuery,
+} from "@/generated/graphql";
 import {useAction} from "@/libs/hooks/useAction";
 import styles from "./posts.module.scss"
 import {useObserver} from "@/libs/hooks/useObserver";
-import {client} from "@/libs/apollo-client";
+import PostSkeleton from "@/features/Posts/PostSkeleton/PostSkeleton";
+
 
 const Posts = () => {
     const [searchTerm, setSearchTerm] = useState<string>("")
     const listRef = useRef<HTMLDivElement>(null)
     const {sort, setCurrentPage, sortBy} = useAction();
 
-    const {data, fetchMore, refetch, loading} = useGetPostsQuery({
+    const {data, fetchMore, refetch, loading, error, networkStatus, subscribeToMore} = useGetPostsQuery({
         variables: {
             endCursorPostId: 0,
             pageSize: 4,
@@ -24,36 +28,37 @@ const Posts = () => {
             searchTerm,
         },
         notifyOnNetworkStatusChange: true,
-    });
+    })
 
-    useSubscription(POST_ADDED_SUBSCRIPTION, {
-        onData: ({ data: { data: subscriptionData } }) => {
-            if (!subscriptionData?.postAdded) return;
+    useEffect(() => {
+        const unsubscribe = subscribeToMore<PostAddedSubscription>({
+            document: PostAddedDocument,
+            updateQuery: (prev: GetPostsQuery, {subscriptionData}) => {
+                if (!subscriptionData?.data?.postAdded) return prev;
 
-            client.cache.modify({
-                fields: {
-                    getPosts(existing = { items: [] }) {
-                        const existingItems = existing.items || [];
-                        const alreadyExists = existingItems.some((post: Post) =>
-                            post.id === subscriptionData.postAdded.id
-                        );
+                const newPost = subscriptionData.data.postAdded;
+                const existingPosts = prev.getPosts?.items || [];
 
-                        if (alreadyExists) return existing;
+                const postExists = existingPosts.some((post) => post.id === newPost.id);
+                if (postExists) return prev;
 
-                        return {
-                            ...existing,
-                            items: [subscriptionData.postAdded, ...existingItems],
-                        };
-                    },
-                },
-            });
-        },
-    });
+                return {
+                    ...prev,
+                    getPosts: {
+                        ...prev.getPosts,
+                        items: [newPost, ...existingPosts]
+                    }
+                };
+            }
+        });
 
-    const oldPosts = data?.getPosts?.items || [];
+        return unsubscribe;
+    }, [subscribeToMore]);
+
+    const oldPosts = data?.getPosts?.items || []
     const posts = Array.from(
         new Map(oldPosts.map(post => [post.id, post])).values()
-    );
+    )
 
     const loadMore = () => {
         if (!data?.getPosts?.items?.length) return;
@@ -61,8 +66,8 @@ const Posts = () => {
         const lastPostId = data.getPosts.items[data.getPosts.items.length - 1]?.id || 0;
 
         fetchMore({
-            variables: { endCursorPostId: lastPostId },
-            updateQuery: (prev, { fetchMoreResult }) => {
+            variables: {endCursorPostId: lastPostId},
+            updateQuery: (prev, {fetchMoreResult}) => {
                 if (!fetchMoreResult || !fetchMoreResult.getPosts) return prev;
 
                 const existingItems = prev.getPosts?.items || [];
@@ -86,22 +91,16 @@ const Posts = () => {
 
     const handleSearch = useCallback(
         (newSearchTerm: string) => {
-            console.log('Search triggered with term:', newSearchTerm);
             setSearchTerm(newSearchTerm);
             setCurrentPage(1);
 
             setTimeout(() => {
-                console.log('Triggering refetch as backup...');
                 refetch({
                     searchTerm: newSearchTerm,
                     endCursorPostId: 0,
                     pageSize: 4,
                     sortBy,
-                    sortDirection: sort,
-                }).then((result) => {
-                    console.log('Backup refetch result:', result);
-                }).catch((error) => {
-                    console.error('Backup refetch error:', error);
+                    sortDirection: sort
                 });
             }, 100);
         },
@@ -120,21 +119,60 @@ const Posts = () => {
             threshold: 0.1,
         }
     );
+// Initial Loading - zeige Skeleton
+    const isInitialLoading = loading && !data;
+    // Search Loading - wenn gesucht wird
+    const isSearching = loading && networkStatus === 4; // NetworkStatus.refetch
+    // Load More Loading - beim Paginieren
+    const isLoadingMore = loading && networkStatus === 3;
 
     return (
         <div className={styles.container}>
-            <UserSearch onSearch={handleSearch} />
+            <UserSearch onSearch={handleSearch}/>
+
             <div className={styles.images} ref={listRef}>
-                {posts.length > 0 ? (
-                    posts.map((post) => (
-                        <Post key={post.id} post={post} data-id={post.id} />
-                    ))
-                ) : (
-                    <div>
-                        {loading ? 'Loading...' : 'No posts found'}
+
+                {posts.map((post) => (
+                    <Post key={post.id} post={post} data-id={post.id} refetch={refetch}/>
+                ))}
+
+                {isInitialLoading && (
+                    <>
+                        {Array.from({length: 4}).map((_, index) => (
+                            <PostSkeleton key={`skeleton-${index}`}/>
+                        ))}
+                    </>
+                )}
+
+                {isSearching && posts.length === 0 && (
+                    <>
+                        {Array.from({length: 4}).map((_, index) => (
+                            <PostSkeleton key={`search-skeleton-${index}`}/>
+                        ))}
+                    </>
+                )}
+
+                {isLoadingMore && (
+                    <>
+                        {Array.from({length: 2}).map((_, index) => (
+                            <PostSkeleton key={`loadmore-skeleton-${index}`}/>
+                        ))}
+                    </>
+                )}
+
+                {!loading && posts.length === 0 && searchTerm && (
+                    <div className={styles.noResults}>
+                        No posts found for "{searchTerm}"
                     </div>
                 )}
-                <div ref={sentinelRef} data-id="sentinel" style={{ height: '1px' }} />
+
+                {error && (
+                    <div className={styles.error}>
+                        Error loading posts: {error.message}
+                    </div>
+                )}
+
+                <div ref={sentinelRef} data-id="sentinel" style={{height: '1px'}}/>
             </div>
         </div>
     );

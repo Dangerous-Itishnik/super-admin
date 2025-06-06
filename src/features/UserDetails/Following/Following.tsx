@@ -5,6 +5,8 @@ import {Table} from "@/components/Table/Table"
 import {useAction} from "@/libs/hooks/useAction";
 import {useFollowingTableConfig} from "@/features/UserDetails/configs";
 import {Pagination} from "@/components/pagination/Pagination";
+import UserDetailSkeleton from "@/features/UserDetails/UserDetailsSkeleton/UserDetailSkeleton";
+import React from "react";
 
 
 const Following = () => {
@@ -36,6 +38,10 @@ const Following = () => {
     const {columns} = useFollowingTableConfig()
 
     return (
+        <>
+            {loading ? (
+                <UserDetailSkeleton rows={5}/>
+            ) : (
         <div>
             <Table
                 data={data?.getFollowing.items || []}
@@ -58,6 +64,8 @@ const Following = () => {
                 totalCount={data?.getFollowing.totalCount}
             />
         </div>
+            )}
+        </>
     )
 }
 export default Following
