@@ -1,0 +1,162 @@
+.sands {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 94px;
+}
+
+.searchSkeleton {
+  flex: 1;
+}
+
+.skeletonInput {
+  height: 36px;
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.selectSkeleton {
+  width: 234px;
+}
+
+.skeletonSelect {
+  height: 36px;
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+  width: 100%;
+}
+
+/* Table Section */
+.tableContainer {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 972px;
+  border-collapse: collapse;
+  margin-top: 50px;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  box-sizing: border-box;
+  border-bottom: 1px solid #404040;
+}
+
+.table th {
+  background: #1a1a1a;
+  position: sticky;
+  top: 0;
+}
+
+.table tr:hover {
+  background: #2a2a2a;
+}
+
+.skeletonHeaderText {
+  height: 20px;
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.skeletonCellText {
+  height: 16px;
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  width: 90%;
+}
+
+/* Different widths for more realistic appearance */
+.table td:nth-child(1) .skeletonCellText {
+  width: 60%;
+}
+
+.table td:nth-child(2) .skeletonCellText {
+  width: 85%;
+}
+
+.table td:nth-child(3) .skeletonCellText {
+  width: 70%;
+}
+
+.table td:nth-child(4) .skeletonCellText {
+  width: 55%;
+}
+
+.table td:nth-child(5) .skeletonCellText {
+  width: 40%;
+}
+
+/* Pagination Section */
+.paginationSkeleton {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.skeletonPaginationItem {
+  height: 36px;
+  width: 36px;
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonPaginationItem:first-child,
+.skeletonPaginationItem:last-child {
+  width: 80px;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .skeletonInput,
+  .skeletonSelect,
+  .skeletonHeaderText,
+  .skeletonCellText,
+  .skeletonPaginationItem {
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeletonInput,
+  .skeletonSelect,
+  .skeletonHeaderText,
+  .skeletonCellText,
+  .skeletonPaginationItem {
+    animation: none;
+    background: #2a2a2a;
+  }
+}

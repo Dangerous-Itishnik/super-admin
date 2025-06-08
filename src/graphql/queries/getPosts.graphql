@@ -6,7 +6,6 @@ query getPosts($endCursorPostId: Int!, $searchTerm: String!, $pageSize: Int!, $s
         sortBy: $sortBy,
         sortDirection: $sortDirection
     ){
-        pagesCount
         pageSize
         totalCount
         items{
