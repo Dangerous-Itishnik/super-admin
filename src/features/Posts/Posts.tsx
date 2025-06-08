@@ -52,8 +52,8 @@ const Posts = () => {
             }
         });
 
-        return unsubscribe;
-    }, [subscribeToMore]);
+        return unsubscribe
+    }, [subscribeToMore])
 
     const oldPosts = data?.getPosts?.items || []
     const posts = Array.from(
@@ -63,7 +63,7 @@ const Posts = () => {
     const loadMore = () => {
         if (!data?.getPosts?.items?.length) return;
 
-        const lastPostId = data.getPosts.items[data.getPosts.items.length - 1]?.id || 0;
+        const lastPostId = data.getPosts.items[data.getPosts.items.length - 1]?.id || 0
 
         fetchMore({
             variables: {endCursorPostId: lastPostId},
@@ -76,7 +76,7 @@ const Posts = () => {
                 const allItems = [...existingItems, ...newItems];
                 const uniqueItems = Array.from(
                     new Map(allItems.map(post => [post.id, post])).values()
-                );
+                )
 
                 return {
                     ...fetchMoreResult,
@@ -92,7 +92,7 @@ const Posts = () => {
     const handleSearch = useCallback(
         (newSearchTerm: string) => {
             setSearchTerm(newSearchTerm);
-            setCurrentPage(1);
+            setCurrentPage(1)
 
             setTimeout(() => {
                 refetch({
@@ -101,11 +101,11 @@ const Posts = () => {
                     pageSize: 4,
                     sortBy,
                     sortDirection: sort
-                });
-            }, 100);
+                })
+            }, 100)
         },
         [setCurrentPage, refetch, sortBy, sort]
-    );
+    )
 
 
     const sentinelRef = useObserver(
@@ -118,13 +118,13 @@ const Posts = () => {
             },
             threshold: 0.1,
         }
-    );
-// Initial Loading - zeige Skeleton
-    const isInitialLoading = loading && !data;
-    // Search Loading - wenn gesucht wird
-    const isSearching = loading && networkStatus === 4; // NetworkStatus.refetch
-    // Load More Loading - beim Paginieren
-    const isLoadingMore = loading && networkStatus === 3;
+    )
+
+    const isInitialLoading = loading && !data
+
+    const isSearching = loading && networkStatus === 4
+
+    const isLoadingMore = loading && networkStatus === 3
 
     return (
         <div className={styles.container}>

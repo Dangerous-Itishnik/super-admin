@@ -77,7 +77,7 @@ const UserBan = ({
                 </div>
             )}
             {isOpen && (
-            <InfoModal modalTitle={user.userBan ? 'UNBAN USER' : 'BAN USER'} onClose={()=>handleClose} open={isOpen}>
+            <InfoModal modalTitle={user.userBan ? 'UNBAN USER' : 'BAN USER'} onClose={handleClose} open={isOpen}>
                 <div className={styles.ban}>
                     <Typography variant="body2">
                         Are you sure you want to {user.userBan ? 'un-ban' : 'ban'} {user.userName}?
