@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, {useCallback, useState} from 'react'
 import { Input } from '../Input/Input'
 import styles from './search.module.scss'
+import debounce from 'lodash/debounce';
 
 type UserSearchProps = {
   onSearch: (searchTerm: string) => void
@@ -9,12 +10,20 @@ type UserSearchProps = {
 const UserSearch = ({ onSearch }:UserSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('')
 
+  const debouncedSearch = useCallback(
+      debounce((value: string) => {
+        onSearch(value);
+      }, 600),
+      [onSearch]
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setSearchTerm(value)
     onSearch(value)
+      debouncedSearch(value)
   }
+
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>

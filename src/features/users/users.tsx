@@ -11,7 +11,6 @@ import {SelectCustom} from '@/components/Select/select'
 import styles from './users.module.scss'
 import {useRouter} from "next/navigation";
 import {useAction} from "@/libs/hooks/useAction";
-import UserSkeleton from "@/features/users/UserSkeleton/UserSkeleton";
 import {statusOptions} from "@/libs/constants";
 
 const Users = () => {
@@ -31,7 +30,7 @@ const Users = () => {
 
 
     const router = useRouter()
-    const {data, refetch, loading, networkStatus, error} = useGetUsersQuery({
+    const {data, refetch, loading, error} = useGetUsersQuery({
         variables: {
             pageSize: 10,
             pageNumber: currentPage as number,
@@ -53,16 +52,22 @@ const Users = () => {
     const onCurrentPageChange = useCallback(
         (value: number | string) => {
             setCurrentPage(Number(value))
+            
         },
         [setCurrentPage]
     )
 
     const handleSearch = useCallback(
-        (searchTerm: string) => {
-            setValueSearch(searchTerm)
-            setCurrentPage(1)
+        (newSearchTerm: string) => {
+            setValueSearch(newSearchTerm)
+            setCurrentPage(1);
+            refetch({
+                searchTerm: newSearchTerm,
+                sortBy,
+                sortDirection: sort,
+            })
         },
-        [setCurrentPage]
+        [refetch, setCurrentPage, sort, sortBy]
     )
 
     const handleStatus = useCallback(
@@ -78,22 +83,9 @@ const Users = () => {
         router.push(`/users/${userId}/info`)
     }, [router])
 
-    const isInitialLoading = loading && !data
-    const isSearching = loading && networkStatus === 4 && !data?.getUsers?.users.length
 
     return (
         <div className={styles.container}>
-            {isInitialLoading ? (
-                <>
-                    <div className={styles.sands}>
-                        <div className={styles.searchSkeleton}></div>
-                        <div className={styles.selectSkeleton}></div>
-
-                    </div>
-                    <UserSkeleton rows={5}/>
-                </>
-            ) : (
-                <>
                     <div className={styles.sands}>
                         <UserSearch onSearch={handleSearch}/>
                         <SelectCustom
@@ -104,9 +96,7 @@ const Users = () => {
                         />
                     </div>
 
-                    {isSearching && data?.getUsers?.users.length === 0 ? (
-                        <UserSkeleton rows={5}/>
-                    ) : (
+                    { data?.getUsers?.users.length && (
                         <>
                             <UsersTable
                                 data={data?.getUsers?.users ?? []}
@@ -118,7 +108,6 @@ const Users = () => {
                                 }}
                             />
 
-                            {!loading && (
                                 <Pagination
                                     options={paginationOptions}
                                     pageSize={pageSize}
@@ -128,25 +117,21 @@ const Users = () => {
                                     portionValue={pageSize.toString()}
                                     totalCount={data?.getUsers.pagination.totalCount}
                                 />
-                            )}
                         </>
                     )}
 
-                    {/* No Results State */}
+
                     {!loading && data?.getUsers?.users.length === 0 && valueSearch && (
                         <div className={styles.noResults}>
                             No users found for "{valueSearch}"
                         </div>
                     )}
 
-                    {/* Error State */}
                     {error && (
                         <div className={styles.error}>
                             Error loading users: {error.message}
                         </div>
                     )}
-                </>
-            )}
         </div>
     );
 }
